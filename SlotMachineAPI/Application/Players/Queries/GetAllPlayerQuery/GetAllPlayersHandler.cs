@@ -2,11 +2,8 @@
 using SlotMachineAPI.Domain;
 using SlotMachineAPI.Infrastructure.Repositories;
 
-namespace SlotMachineAPI.Application.Players.Queries
+namespace SlotMachineAPI.Application.Players.Queries.GetAllPlayer
 {
-    public class GetAllPlayersQuery : IRequest<List<Player>>
-    {
-    }
     public class GetAllPlayersHandler : IRequestHandler<GetAllPlayersQuery, List<Player>>
     {
         private readonly IPlayerRepository _playerRepository;
@@ -33,4 +30,5 @@ namespace SlotMachineAPI.Application.Players.Queries
             }
         }
     }
+
 }

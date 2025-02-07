@@ -1,3 +1,5 @@
+using FluentValidation.AspNetCore;
+using FluentValidation;
 using Microsoft.OpenApi.Models;
 using MongoDB.Driver;
 using Serilog;
@@ -5,14 +7,15 @@ using SlotMachineAPI.Infrastructure.Context;
 using SlotMachineAPI.Infrastructure.Repositories;
 using SlotMachineAPI.Middleware;
 using System.Reflection;
+using SlotMachineAPI.Application.Players.Commands.SpindCommand;
+using SlotMachineAPI.Application.Players.Commands.CreatePlayerCommand;
+using SlotMachineAPI.Application.Players.Commands.DeletePlayerCommand;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Serilog Conf
-
 Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration).CreateLogger();
-
 builder.Host.UseSerilog();
 
 // MongoDB Conf
@@ -26,7 +29,6 @@ builder.Services.AddSingleton<IPlayerRepository, PlayerRepository>();
 // MediatR Conf
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
-
 // Swagger Conf
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -35,6 +37,10 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services.AddControllers();
+
+// Fluent Validation Conf
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<SpinCommandValidator>();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();

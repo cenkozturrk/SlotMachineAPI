@@ -2,15 +2,8 @@
 using SlotMachineAPI.Domain;
 using SlotMachineAPI.Infrastructure.Repositories;
 
-namespace SlotMachineAPI.Application.Players.Commands
+namespace SlotMachineAPI.Application.Players.Commands.CreatePlayerCommand
 {
-    public class CreatePlayerCommand : IRequest<string>
-    {
-        public string Name
-        {
-            get; set;
-        }
-    }
     public class CreatePlayerHandler : IRequestHandler<CreatePlayerCommand, string>
     {
         private readonly IPlayerRepository _playerRepository;
@@ -50,4 +43,5 @@ namespace SlotMachineAPI.Application.Players.Commands
 
         }
     }
+
 }

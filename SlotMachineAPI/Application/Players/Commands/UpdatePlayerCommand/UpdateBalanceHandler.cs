@@ -1,32 +1,17 @@
 ﻿using MediatR;
-using SlotMachineAPI.Domain;
 using SlotMachineAPI.Infrastructure.Repositories;
 
-namespace SlotMachineAPI.Application.Players.Commands
+namespace SlotMachineAPI.Application.Players.Commands.UpdatePlayerCommand
 {
-    public class UpdateBalanceCommand : IRequest<bool>
-    {
-        public string PlayerId
-        {
-            get; set;
-        }
-        public decimal Amount
-        {
-            get; set;
-        }
-    }
-
     public class UpdateBalanceHandler : IRequestHandler<UpdateBalanceCommand, bool>
     {
         private readonly IPlayerRepository _playerRepository;
         private readonly ILogger<UpdateBalanceHandler> _logger;
-
         public UpdateBalanceHandler(IPlayerRepository playerRepository, ILogger<UpdateBalanceHandler> logger)
         {
             _playerRepository = playerRepository;
             _logger = logger;
         }
-
         public async Task<bool> Handle(UpdateBalanceCommand request, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Updating existing Player");
@@ -41,8 +26,8 @@ namespace SlotMachineAPI.Application.Players.Commands
             }
             else
             {
-                _logger.LogWarning("Player with ID {PlayerId} not found.", request.PlayerId);
-                throw new KeyNotFoundException($"Player with ID {request.PlayerId} not found.");
+                _logger.LogWarning("Player with ID {PlayerId} not found or insufficient balance", request.PlayerId);
+                throw new KeyNotFoundException($"Player with ID {request.PlayerId} not found or insufficient balance");
             }
         }
     }

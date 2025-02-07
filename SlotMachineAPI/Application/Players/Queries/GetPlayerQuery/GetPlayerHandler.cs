@@ -2,12 +2,8 @@
 using SlotMachineAPI.Domain;
 using SlotMachineAPI.Infrastructure.Repositories;
 
-namespace SlotMachineAPI.Application.Players.Queries
+namespace SlotMachineAPI.Application.Players.Queries.GetPlayerQuery
 {
-    public class GetPlayerQuery : IRequest<Player>
-    {
-        public string Id { get; set; }
-    }
     public class GetPlayerHandler : IRequestHandler<GetPlayerQuery, Player>
     {
         private readonly IPlayerRepository _playerRepository;
@@ -32,7 +28,8 @@ namespace SlotMachineAPI.Application.Players.Queries
                 _logger.LogError(ex, $"An error occurred while retrieving the player with ID {request.Id}.");
                 throw;
             }
-           
+
         }
     }
+
 }
