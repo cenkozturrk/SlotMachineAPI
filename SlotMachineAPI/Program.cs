@@ -3,11 +3,10 @@ using MongoDB.Driver;
 using Serilog;
 using SlotMachineAPI.Infrastructure.Context;
 using SlotMachineAPI.Infrastructure.Repositories;
+using SlotMachineAPI.Middleware;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 
 // Serilog Conf
 
@@ -20,7 +19,7 @@ builder.Host.UseSerilog();
 builder.Services.Configure<MongoDBSettings>(
     builder.Configuration.GetSection("MongoDB"));
 
-// Life Cycle Of DI 
+// Life Cycle Of DI Conf
 builder.Services.AddSingleton<MongoDBContext>();
 builder.Services.AddSingleton<IPlayerRepository, PlayerRepository>();
 
@@ -42,8 +41,6 @@ builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
-//app.UseSerilogRequestLogging();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -57,6 +54,7 @@ if (app.Environment.IsDevelopment())
 }
 // Middleware Conf
 app.UseMiddleware<LoggingMiddleware>();
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 

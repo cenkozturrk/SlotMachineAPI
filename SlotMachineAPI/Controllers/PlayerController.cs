@@ -20,6 +20,10 @@ namespace SlotMachineAPI.Controllers
         public async Task<IActionResult> GetAllPlayers()
         {
             var players = await _mediator.Send(new GetAllPlayersQuery());
+
+            if (players is null || !players.Any())
+                throw new KeyNotFoundException("The player list could not be found!"); 
+
             return Ok(players);
         }
 
@@ -27,11 +31,9 @@ namespace SlotMachineAPI.Controllers
         public async Task<IActionResult> GetPlayer(string id)
         {
             var player = await _mediator.Send(new GetPlayerQuery { Id = id });
-            if (player == null)
-                return NotFound(new
-                {
-                    message = "Player not found"
-                });
+
+            if (player is null)
+                throw new KeyNotFoundException($"Player with ID {id} not found!");
 
             return Ok(player);
         }
@@ -40,6 +42,9 @@ namespace SlotMachineAPI.Controllers
         public async Task<IActionResult> CreatePlayer([FromBody] CreatePlayerCommand command)
         {
             var playerId = await _mediator.Send(command);
+            if (playerId is null)
+                throw new KeyNotFoundException("Player could not be created!");
+
             return Ok(new
             {
                 message = "Player created",
@@ -48,14 +53,12 @@ namespace SlotMachineAPI.Controllers
         }
 
         [HttpPut("update-balance")]
-        public async Task<IActionResult> UpdateBalance([FromBody] UpdateBalanceCommand command)
+        public async Task<IActionResult> UpdateBalance(string playerId, decimal amount)
         {
-            var success = await _mediator.Send(command);
+            var success = await _mediator.Send( new UpdateBalanceCommand { PlayerId = playerId ,Amount = amount});
+
             if (!success)
-                return BadRequest(new
-                {
-                    message = "Insufficient balance or player not found"
-                });
+                throw new KeyNotFoundException("Insufficient balance or player not found");
 
             return Ok(new
             {
@@ -68,10 +71,7 @@ namespace SlotMachineAPI.Controllers
         {
             var success = await _mediator.Send(new DeletePlayerCommand { PlayerId = id });
             if (!success)
-                return NotFound(new
-                {
-                    message = "Player not found"
-                });
+                throw new KeyNotFoundException("The player could not be deleted!");
 
             return Ok(new
             {
@@ -83,11 +83,13 @@ namespace SlotMachineAPI.Controllers
         public async Task<IActionResult> Spin(string playerId, decimal betAmount)
         {
             var player = await _mediator.Send(new SpinCommand { PlayerId = playerId , BetAmount = betAmount });
-            if (player == null)
+
+            if (player is null)
                 return NotFound(new
                 {
                     message = "Player not found"
                 });
+
             return Ok(player);
         }
     }
