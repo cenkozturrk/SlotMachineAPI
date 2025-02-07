@@ -10,15 +10,27 @@ namespace SlotMachineAPI.Application.Players.Queries
     public class GetAllPlayersHandler : IRequestHandler<GetAllPlayersQuery, List<Player>>
     {
         private readonly IPlayerRepository _playerRepository;
+        private readonly ILogger<GetAllPlayersHandler> _logger;
 
-        public GetAllPlayersHandler(IPlayerRepository playerRepository)
+        public GetAllPlayersHandler(IPlayerRepository playerRepository, ILogger<GetAllPlayersHandler> logger)
         {
             _playerRepository = playerRepository;
+            _logger = logger;
         }
 
         public async Task<List<Player>> Handle(GetAllPlayersQuery request, CancellationToken cancellationToken)
         {
-            return await _playerRepository.GetAllAsync();
+            try
+            {
+                _logger.LogInformation("Fetching all Players from the database");
+                return await _playerRepository.GetAllAsync();
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while retrieving all Players.");
+                throw;
+            }
         }
     }
 }

@@ -1,0 +1,292 @@
+[2025-02-07 10:47:17 INF] Request starting HTTP/2 GET https://localhost:44392/index.html - null null
+[2025-02-07 10:47:17 INF] Application started. Press Ctrl+C to shut down.
+[2025-02-07 10:47:17 INF] Hosting environment: Development
+[2025-02-07 10:47:17 INF] Content root path: C:\Users\Ceku\source\repos\SlotMachineAPI\SlotMachineAPI
+[2025-02-07 10:47:17 INF] Request finished HTTP/2 GET https://localhost:44392/index.html - 200 null text/html;charset=utf-8 198.2047ms
+[2025-02-07 10:47:17 INF] Request starting HTTP/2 GET https://localhost:44392/_framework/aspnetcore-browser-refresh.js - null null
+[2025-02-07 10:47:17 INF] Request starting HTTP/2 GET https://localhost:44392/index.js - null null
+[2025-02-07 10:47:17 INF] Request starting HTTP/2 GET https://localhost:44392/_vs/browserLink - null null
+[2025-02-07 10:47:17 INF] Request finished HTTP/2 GET https://localhost:44392/index.js - 200 null application/javascript;charset=utf-8 85.5386ms
+[2025-02-07 10:47:17 INF] Request finished HTTP/2 GET https://localhost:44392/_framework/aspnetcore-browser-refresh.js - 200 13780 application/javascript; charset=utf-8 94.4093ms
+[2025-02-07 10:47:17 INF] Request finished HTTP/2 GET https://localhost:44392/_vs/browserLink - 200 null text/javascript; charset=UTF-8 85.8892ms
+[2025-02-07 10:47:17 INF] Request starting HTTP/2 GET https://localhost:44392/swagger/v1/swagger.json - null null
+[2025-02-07 10:47:17 INF] Request finished HTTP/2 GET https://localhost:44392/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 5.4191ms
+[2025-02-07 10:47:22 INF] Request starting HTTP/2 GET https://localhost:44392/api/Player - null null
+[2025-02-07 10:47:22 INF]  Request: GET /api/Player | Body: /api/Player | IP: ::1
+[2025-02-07 10:47:22 INF] Executing endpoint 'SlotMachineAPI.Controllers.PlayerController.GetAllPlayers (SlotMachineAPI)'
+[2025-02-07 10:47:22 INF] Route matched with {action = "GetAllPlayers", controller = "Player"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllPlayers() on controller SlotMachineAPI.Controllers.PlayerController (SlotMachineAPI).
+[2025-02-07 10:47:23 INF] Fetching all Players from the database
+[2025-02-07 10:47:23 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SlotMachineAPI.Domain.Player, SlotMachineAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-02-07 10:47:23 INF] Executed action SlotMachineAPI.Controllers.PlayerController.GetAllPlayers (SlotMachineAPI) in 596.2851ms
+[2025-02-07 10:47:23 INF] Executed endpoint 'SlotMachineAPI.Controllers.PlayerController.GetAllPlayers (SlotMachineAPI)'
+[2025-02-07 10:47:23 INF]  Response: 200 /api/Player | Time: 640 ms
+[2025-02-07 10:47:23 INF] Request finished HTTP/2 GET https://localhost:44392/api/Player - 200 null application/json; charset=utf-8 653.6699ms
+[2025-02-07 10:47:58 INF] Request starting HTTP/2 GET https://localhost:44392/api/Player/67a5338b175f6d97b8e47a78 - null null
+[2025-02-07 10:47:58 INF]  Request: GET /api/Player/67a5338b175f6d97b8e47a78 | Body: /api/Player/67a5338b175f6d97b8e47a78 | IP: ::1
+[2025-02-07 10:47:58 INF] Executing endpoint 'SlotMachineAPI.Controllers.PlayerController.GetPlayer (SlotMachineAPI)'
+[2025-02-07 10:47:58 INF] Route matched with {action = "GetPlayer", controller = "Player"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetPlayer(System.String) on controller SlotMachineAPI.Controllers.PlayerController (SlotMachineAPI).
+[2025-02-07 10:47:59 INF] Fetching Player by Id(67a5338b175f6d97b8e47a78) from the MongoDb.
+[2025-02-07 10:47:59 INF] Executing OkObjectResult, writing value of type 'SlotMachineAPI.Domain.Player'.
+[2025-02-07 10:47:59 INF] Executed action SlotMachineAPI.Controllers.PlayerController.GetPlayer (SlotMachineAPI) in 1249.6766ms
+[2025-02-07 10:47:59 INF] Executed endpoint 'SlotMachineAPI.Controllers.PlayerController.GetPlayer (SlotMachineAPI)'
+[2025-02-07 10:47:59 INF]  Response: 200 /api/Player/67a5338b175f6d97b8e47a78 | Time: 1257 ms
+[2025-02-07 10:47:59 INF] Request finished HTTP/2 GET https://localhost:44392/api/Player/67a5338b175f6d97b8e47a78 - 200 null application/json; charset=utf-8 1259.3586ms
+[2025-02-07 10:48:16 INF] Request starting HTTP/2 GET https://localhost:44392/api/Player - null null
+[2025-02-07 10:48:16 INF]  Request: GET /api/Player | Body: /api/Player | IP: ::1
+[2025-02-07 10:48:16 INF] Executing endpoint 'SlotMachineAPI.Controllers.PlayerController.GetAllPlayers (SlotMachineAPI)'
+[2025-02-07 10:48:16 INF] Route matched with {action = "GetAllPlayers", controller = "Player"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllPlayers() on controller SlotMachineAPI.Controllers.PlayerController (SlotMachineAPI).
+[2025-02-07 10:48:16 INF] Fetching all Players from the database
+[2025-02-07 10:48:16 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SlotMachineAPI.Domain.Player, SlotMachineAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-02-07 10:48:16 INF] Executed action SlotMachineAPI.Controllers.PlayerController.GetAllPlayers (SlotMachineAPI) in 7.3937ms
+[2025-02-07 10:48:16 INF] Executed endpoint 'SlotMachineAPI.Controllers.PlayerController.GetAllPlayers (SlotMachineAPI)'
+[2025-02-07 10:48:16 INF]  Response: 200 /api/Player | Time: 7 ms
+[2025-02-07 10:48:16 INF] Request finished HTTP/2 GET https://localhost:44392/api/Player - 200 null application/json; charset=utf-8 8.4967ms
+[2025-02-07 10:48:55 INF] Request starting HTTP/2 POST https://localhost:44392/api/Player/create - application/json 27
+[2025-02-07 10:48:55 INF]  Request: POST /api/Player/create | Body: /api/Player/create | IP: ::1
+[2025-02-07 10:48:55 INF] Executing endpoint 'SlotMachineAPI.Controllers.PlayerController.CreatePlayer (SlotMachineAPI)'
+[2025-02-07 10:48:55 INF] Route matched with {action = "CreatePlayer", controller = "Player"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePlayer(SlotMachineAPI.Application.Players.Commands.CreatePlayerCommand) on controller SlotMachineAPI.Controllers.PlayerController (SlotMachineAPI).
+[2025-02-07 10:48:55 INF] Adding a new Player.
+[2025-02-07 10:48:55 INF] Adding new player with name: Gordie Howe
+[2025-02-07 10:48:55 INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-02-07 10:48:55 INF] Executed action SlotMachineAPI.Controllers.PlayerController.CreatePlayer (SlotMachineAPI) in 49.3915ms
+[2025-02-07 10:48:55 INF] Executed endpoint 'SlotMachineAPI.Controllers.PlayerController.CreatePlayer (SlotMachineAPI)'
+[2025-02-07 10:48:55 INF]  Response: 200 /api/Player/create | Time: 53 ms
+[2025-02-07 10:48:55 INF] Request finished HTTP/2 POST https://localhost:44392/api/Player/create - 200 null application/json; charset=utf-8 54.4518ms
+[2025-02-07 10:49:08 INF] Request starting HTTP/2 DELETE https://localhost:44392/api/Player/67a5bae78b485733a01b4ede - null null
+[2025-02-07 10:49:08 INF]  Request: DELETE /api/Player/67a5bae78b485733a01b4ede | Body: /api/Player/67a5bae78b485733a01b4ede | IP: ::1
+[2025-02-07 10:49:08 INF] Executing endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:49:08 INF] Route matched with {action = "DeletePlayer", controller = "Player"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeletePlayer(System.String) on controller SlotMachineAPI.Controllers.PlayerController (SlotMachineAPI).
+[2025-02-07 10:49:08 INF] Attempting to delete player with ID: 67a5bae78b485733a01b4ede
+[2025-02-07 10:49:08 INF] Transaction 08b5be93-a4ba-496e-a11e-9d4b4bf75e6c started: Deleting player with ID: 67a5bae78b485733a01b4ede
+[2025-02-07 10:49:08 INF] Player found: Deleting player with ID 67a5bae78b485733a01b4ede
+[2025-02-07 10:49:08 INF] Transaction 08b5be93-a4ba-496e-a11e-9d4b4bf75e6c succeeded: Player with ID 67a5bae78b485733a01b4ede deleted successfully.
+[2025-02-07 10:49:08 INF] Player with ID 67a5bae78b485733a01b4ede deleted successfully.
+[2025-02-07 10:49:08 INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-02-07 10:49:08 INF] Executed action SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI) in 14.1195ms
+[2025-02-07 10:49:08 INF] Executed endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:49:08 INF]  Response: 200 /api/Player/67a5bae78b485733a01b4ede | Time: 17 ms
+[2025-02-07 10:49:08 INF] Request finished HTTP/2 DELETE https://localhost:44392/api/Player/67a5bae78b485733a01b4ede - 200 null application/json; charset=utf-8 18.0799ms
+[2025-02-07 10:50:41 INF] Request starting HTTP/2 DELETE https://localhost:44392/api/Player/67a5bae78b485733a01b4ede - null null
+[2025-02-07 10:50:41 INF]  Request: DELETE /api/Player/67a5bae78b485733a01b4ede | Body: /api/Player/67a5bae78b485733a01b4ede | IP: ::1
+[2025-02-07 10:50:41 INF] Executing endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:50:41 INF] Route matched with {action = "DeletePlayer", controller = "Player"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeletePlayer(System.String) on controller SlotMachineAPI.Controllers.PlayerController (SlotMachineAPI).
+[2025-02-07 10:50:41 INF] Attempting to delete player with ID: 67a5bae78b485733a01b4ede
+[2025-02-07 10:50:41 INF] Transaction 3525f591-d0bf-4ea3-bb85-86b88a2fb64e started: Deleting player with ID: 67a5bae78b485733a01b4ede
+[2025-02-07 10:50:41 INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-02-07 10:50:41 INF] Executed action SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI) in 12.9663ms
+[2025-02-07 10:50:41 INF] Executed endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:50:41 INF]  Response: 200 /api/Player/67a5bae78b485733a01b4ede | Time: 13 ms
+[2025-02-07 10:50:41 INF] Request finished HTTP/2 DELETE https://localhost:44392/api/Player/67a5bae78b485733a01b4ede - 200 null application/json; charset=utf-8 13.9383ms
+[2025-02-07 10:50:43 INF] Request starting HTTP/2 DELETE https://localhost:44392/api/Player/67a5bae78b485733a01b4ede - null null
+[2025-02-07 10:50:43 INF]  Request: DELETE /api/Player/67a5bae78b485733a01b4ede | Body: /api/Player/67a5bae78b485733a01b4ede | IP: ::1
+[2025-02-07 10:50:43 INF] Executing endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:50:43 INF] Route matched with {action = "DeletePlayer", controller = "Player"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeletePlayer(System.String) on controller SlotMachineAPI.Controllers.PlayerController (SlotMachineAPI).
+[2025-02-07 10:50:43 INF] Attempting to delete player with ID: 67a5bae78b485733a01b4ede
+[2025-02-07 10:50:43 INF] Transaction 7809da9b-c84e-4ec6-a262-c14e60005b7b started: Deleting player with ID: 67a5bae78b485733a01b4ede
+[2025-02-07 10:50:43 INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-02-07 10:50:43 INF] Executed action SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI) in 3.9343ms
+[2025-02-07 10:50:43 INF] Executed endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:50:43 INF]  Response: 200 /api/Player/67a5bae78b485733a01b4ede | Time: 4 ms
+[2025-02-07 10:50:43 INF] Request finished HTTP/2 DELETE https://localhost:44392/api/Player/67a5bae78b485733a01b4ede - 200 null application/json; charset=utf-8 4.4923ms
+[2025-02-07 10:51:04 INF] Request starting HTTP/2 DELETE https://localhost:44392/api/Player/67a5bae78b485733a01b4ede - null null
+[2025-02-07 10:51:04 INF]  Request: DELETE /api/Player/67a5bae78b485733a01b4ede | Body: /api/Player/67a5bae78b485733a01b4ede | IP: ::1
+[2025-02-07 10:51:04 INF] Executing endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:51:04 INF] Route matched with {action = "DeletePlayer", controller = "Player"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeletePlayer(System.String) on controller SlotMachineAPI.Controllers.PlayerController (SlotMachineAPI).
+[2025-02-07 10:51:06 INF] Attempting to delete player with ID: 67a5bae78b485733a01b4ede
+[2025-02-07 10:51:07 INF] Transaction 41705e39-d036-4e34-9f7b-96b670928fe9 started: Deleting player with ID: 67a5bae78b485733a01b4ede
+[2025-02-07 10:51:17 INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-02-07 10:51:17 INF] Executed action SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI) in 13042.9379ms
+[2025-02-07 10:51:17 INF] Executed endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:51:17 INF]  Response: 200 /api/Player/67a5bae78b485733a01b4ede | Time: 13043 ms
+[2025-02-07 10:51:17 INF] Request finished HTTP/2 DELETE https://localhost:44392/api/Player/67a5bae78b485733a01b4ede - 200 null application/json; charset=utf-8 13043.5014ms
+[2025-02-07 10:51:20 INF] Request starting HTTP/2 DELETE https://localhost:44392/api/Player/67a5bae78b485733a01b4ede - null null
+[2025-02-07 10:51:20 INF]  Request: DELETE /api/Player/67a5bae78b485733a01b4ede | Body: /api/Player/67a5bae78b485733a01b4ede | IP: ::1
+[2025-02-07 10:51:20 INF] Executing endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:51:20 INF] Route matched with {action = "DeletePlayer", controller = "Player"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeletePlayer(System.String) on controller SlotMachineAPI.Controllers.PlayerController (SlotMachineAPI).
+[2025-02-07 10:51:23 INF] Attempting to delete player with ID: 67a5bae78b485733a01b4ede
+[2025-02-07 10:51:24 INF] Transaction bcae7bb6-8a5e-4e69-9254-ed00110fa522 started: Deleting player with ID: 67a5bae78b485733a01b4ede
+[2025-02-07 10:51:37 INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-02-07 10:51:37 INF] Executed action SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI) in 16505.4272ms
+[2025-02-07 10:51:37 INF] Executed endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:51:37 INF]  Response: 200 /api/Player/67a5bae78b485733a01b4ede | Time: 16508 ms
+[2025-02-07 10:51:37 INF] Request finished HTTP/2 DELETE https://localhost:44392/api/Player/67a5bae78b485733a01b4ede - 200 null application/json; charset=utf-8 16508.5033ms
+[2025-02-07 10:52:42 INF] Request starting HTTP/2 GET https://localhost:44392/index.html - null null
+[2025-02-07 10:52:42 INF] Application started. Press Ctrl+C to shut down.
+[2025-02-07 10:52:42 INF] Hosting environment: Development
+[2025-02-07 10:52:42 INF] Content root path: C:\Users\Ceku\source\repos\SlotMachineAPI\SlotMachineAPI
+[2025-02-07 10:52:42 INF] Request finished HTTP/2 GET https://localhost:44392/index.html - 200 null text/html;charset=utf-8 165.755ms
+[2025-02-07 10:52:42 INF] Request starting HTTP/2 GET https://localhost:44392/_framework/aspnetcore-browser-refresh.js - null null
+[2025-02-07 10:52:42 INF] Request starting HTTP/2 GET https://localhost:44392/index.js - null null
+[2025-02-07 10:52:42 INF] Request starting HTTP/2 GET https://localhost:44392/_vs/browserLink - null null
+[2025-02-07 10:52:42 INF] Request finished HTTP/2 GET https://localhost:44392/_framework/aspnetcore-browser-refresh.js - 200 13780 application/javascript; charset=utf-8 18.8906ms
+[2025-02-07 10:52:42 INF] Request finished HTTP/2 GET https://localhost:44392/index.js - 200 null application/javascript;charset=utf-8 19.2067ms
+[2025-02-07 10:52:42 INF] Request finished HTTP/2 GET https://localhost:44392/_vs/browserLink - 200 null text/javascript; charset=UTF-8 28.8986ms
+[2025-02-07 10:52:42 INF] Request starting HTTP/2 GET https://localhost:44392/swagger/v1/swagger.json - null null
+[2025-02-07 10:52:42 INF] Request finished HTTP/2 GET https://localhost:44392/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 4.7166ms
+[2025-02-07 10:52:46 INF] Request starting HTTP/2 GET https://localhost:44392/api/Player - null null
+[2025-02-07 10:52:46 INF]  Request: GET /api/Player | Body: /api/Player | IP: ::1
+[2025-02-07 10:52:46 INF] Executing endpoint 'SlotMachineAPI.Controllers.PlayerController.GetAllPlayers (SlotMachineAPI)'
+[2025-02-07 10:52:46 INF] Route matched with {action = "GetAllPlayers", controller = "Player"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllPlayers() on controller SlotMachineAPI.Controllers.PlayerController (SlotMachineAPI).
+[2025-02-07 10:52:46 INF] Fetching all Players from the database
+[2025-02-07 10:52:46 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SlotMachineAPI.Domain.Player, SlotMachineAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-02-07 10:52:46 INF] Executed action SlotMachineAPI.Controllers.PlayerController.GetAllPlayers (SlotMachineAPI) in 656.5645ms
+[2025-02-07 10:52:46 INF] Executed endpoint 'SlotMachineAPI.Controllers.PlayerController.GetAllPlayers (SlotMachineAPI)'
+[2025-02-07 10:52:46 INF]  Response: 200 /api/Player | Time: 688 ms
+[2025-02-07 10:52:46 INF] Request finished HTTP/2 GET https://localhost:44392/api/Player - 200 null application/json; charset=utf-8 693.4912ms
+[2025-02-07 10:52:58 INF] Request starting HTTP/2 DELETE https://localhost:44392/api/Player/asdfd - null null
+[2025-02-07 10:52:58 INF]  Request: DELETE /api/Player/asdfd | Body: /api/Player/asdfd | IP: ::1
+[2025-02-07 10:52:58 INF] Executing endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:52:58 INF] Route matched with {action = "DeletePlayer", controller = "Player"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeletePlayer(System.String) on controller SlotMachineAPI.Controllers.PlayerController (SlotMachineAPI).
+[2025-02-07 10:53:03 INF] Attempting to delete player with ID: asdfd
+[2025-02-07 10:53:04 INF] Transaction 4916bb95-d6c8-4305-a7af-e358333936dc started: Deleting player with ID: asdfd
+[2025-02-07 10:53:11 ERR] Transaction 4916bb95-d6c8-4305-a7af-e358333936dc failed: An error occurred while deleting the player with ID asdfd.
+System.FormatException: 'asdfd' is not a valid 24 digit hex string.
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at MongoDB.Bson.Serialization.Serializers.StringSerializer.SerializeValue(BsonSerializationContext context, BsonSerializationArgs args, String value)
+   at MongoDB.Bson.Serialization.Serializers.SealedClassSerializerBase`1.Serialize(BsonSerializationContext context, BsonSerializationArgs args, TValue value)
+   at MongoDB.Bson.Serialization.Serializers.SerializerBase`1.MongoDB.Bson.Serialization.IBsonSerializer.Serialize(BsonSerializationContext context, BsonSerializationArgs args, Object value)
+   at MongoDB.Bson.Serialization.IBsonSerializerExtensions.Serialize(IBsonSerializer serializer, BsonSerializationContext context, Object value)
+   at MongoDB.Driver.Linq.Linq3Implementation.Misc.SerializationHelper.SerializeValue(IBsonSerializer serializer, Object value)
+   at MongoDB.Driver.Linq.Linq3Implementation.Misc.SerializationHelper.SerializeValue(IBsonSerializer serializer, ConstantExpression constantExpression, Expression containingExpression)
+   at MongoDB.Driver.Linq.Linq3Implementation.Translators.ExpressionToFilterTranslators.ExpressionTranslators.ComparisonExpressionToFilterTranslator.Translate(TranslationContext context, BinaryExpression expression)
+   at MongoDB.Driver.Linq.Linq3Implementation.Translators.ExpressionToFilterTranslators.ExpressionToFilterTranslator.TranslateUsingQueryOperators(TranslationContext context, Expression expression)
+   at MongoDB.Driver.Linq.Linq3Implementation.Translators.ExpressionToFilterTranslators.ExpressionToFilterTranslator.Translate(TranslationContext context, Expression expression, Boolean exprOk)
+   at MongoDB.Driver.Linq.Linq3Implementation.Translators.ExpressionToFilterTranslators.ExpressionToFilterTranslator.TranslateLambda(TranslationContext context, LambdaExpression lambdaExpression, IBsonSerializer parameterSerializer, Boolean asRoot)
+   at MongoDB.Driver.Linq.LinqProviderAdapter.TranslateExpressionToFilter[TDocument](Expression`1 expression, IBsonSerializer`1 documentSerializer, IBsonSerializerRegistry serializerRegistry, ExpressionTranslationOptions translationOptions)
+   at MongoDB.Driver.ExpressionFilterDefinition`1.Render(RenderArgs`1 args)
+   at MongoDB.Driver.MongoCollectionImpl`1.CreateFindOperation[TProjection](FilterDefinition`1 filter, FindOptions`2 options, RenderArgs`1 renderArgs)
+   at MongoDB.Driver.MongoCollectionImpl`1.FindAsync[TProjection](IClientSessionHandle session, FilterDefinition`1 filter, FindOptions`2 options, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.<>c__DisplayClass53_0`1.<FindAsync>b__0(IClientSessionHandle session)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at MongoDB.Driver.IAsyncCursorSourceExtensions.FirstOrDefaultAsync[TDocument](IAsyncCursorSource`1 source, CancellationToken cancellationToken)
+   at SlotMachineAPI.Infrastructure.Repositories.Repository`1.GetByIdAsync(String id) in C:\Users\Ceku\source\repos\SlotMachineAPI\SlotMachineAPI\Infrastructure\Repositories\Repository.cs:line 17
+   at SlotMachineAPI.Application.Players.Commands.DeletePlayerHandler.Handle(DeletePlayerCommand request, CancellationToken cancellationToken) in C:\Users\Ceku\source\repos\SlotMachineAPI\SlotMachineAPI\Application\Players\Commands\DeletePlayerCommand.cs:line 30
+[2025-02-07 10:53:11 WRN] Player with ID asdfd not found. Nothing to delete.
+[2025-02-07 10:53:11 INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-02-07 10:53:11 INF] Executed action SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI) in 12449.9267ms
+[2025-02-07 10:53:11 INF] Executed endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:53:11 INF]  Response: 200 /api/Player/asdfd | Time: 12459 ms
+[2025-02-07 10:53:11 INF] Request finished HTTP/2 DELETE https://localhost:44392/api/Player/asdfd - 200 null application/json; charset=utf-8 12461.6607ms
+[2025-02-07 10:53:41 INF] Request starting HTTP/2 GET https://localhost:44392/index.html - null null
+[2025-02-07 10:53:41 INF] Request finished HTTP/2 GET https://localhost:44392/index.html - 200 null text/html;charset=utf-8 3.3079ms
+[2025-02-07 10:53:41 INF] Request starting HTTP/2 GET https://localhost:44392/_framework/aspnetcore-browser-refresh.js - null null
+[2025-02-07 10:53:41 INF] Request starting HTTP/2 GET https://localhost:44392/index.js - null null
+[2025-02-07 10:53:41 INF] Request starting HTTP/2 GET https://localhost:44392/_vs/browserLink - null null
+[2025-02-07 10:53:41 INF] Request finished HTTP/2 GET https://localhost:44392/_framework/aspnetcore-browser-refresh.js - 200 13780 application/javascript; charset=utf-8 37.5804ms
+[2025-02-07 10:53:41 INF] Request finished HTTP/2 GET https://localhost:44392/index.js - 200 null application/javascript;charset=utf-8 37.6218ms
+[2025-02-07 10:53:41 INF] Request finished HTTP/2 GET https://localhost:44392/_vs/browserLink - 200 null text/javascript; charset=UTF-8 36.8615ms
+[2025-02-07 10:53:41 INF] Request starting HTTP/2 GET https://localhost:44392/swagger/v1/swagger.json - null null
+[2025-02-07 10:53:41 INF] Request finished HTTP/2 GET https://localhost:44392/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 7.9146ms
+[2025-02-07 10:53:41 INF] Request starting HTTP/2 GET https://localhost:44392/favicon-32x32.png - null null
+[2025-02-07 10:53:41 INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+[2025-02-07 10:53:41 INF] Request finished HTTP/2 GET https://localhost:44392/favicon-32x32.png - 200 628 image/png 7.4871ms
+[2025-02-07 10:53:47 INF] Request starting HTTP/2 DELETE https://localhost:44392/api/Player/fdasfasd - null null
+[2025-02-07 10:53:47 INF]  Request: DELETE /api/Player/fdasfasd | Body: /api/Player/fdasfasd | IP: ::1
+[2025-02-07 10:53:47 INF] Executing endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:53:47 INF] Route matched with {action = "DeletePlayer", controller = "Player"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeletePlayer(System.String) on controller SlotMachineAPI.Controllers.PlayerController (SlotMachineAPI).
+[2025-02-07 10:53:48 INF] Attempting to delete player with ID: fdasfasd
+[2025-02-07 10:53:49 INF] Transaction 7caf7be2-f231-4eb0-8a48-25bcf1d4c440 started: Deleting player with ID: fdasfasd
+[2025-02-07 10:53:52 ERR] Transaction 7caf7be2-f231-4eb0-8a48-25bcf1d4c440 failed: An error occurred while deleting the player with ID fdasfasd.
+System.FormatException: 'fdasfasd' is not a valid 24 digit hex string.
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at MongoDB.Bson.Serialization.Serializers.StringSerializer.SerializeValue(BsonSerializationContext context, BsonSerializationArgs args, String value)
+   at MongoDB.Bson.Serialization.Serializers.SealedClassSerializerBase`1.Serialize(BsonSerializationContext context, BsonSerializationArgs args, TValue value)
+   at MongoDB.Bson.Serialization.Serializers.SerializerBase`1.MongoDB.Bson.Serialization.IBsonSerializer.Serialize(BsonSerializationContext context, BsonSerializationArgs args, Object value)
+   at MongoDB.Bson.Serialization.IBsonSerializerExtensions.Serialize(IBsonSerializer serializer, BsonSerializationContext context, Object value)
+   at MongoDB.Driver.Linq.Linq3Implementation.Misc.SerializationHelper.SerializeValue(IBsonSerializer serializer, Object value)
+   at MongoDB.Driver.Linq.Linq3Implementation.Misc.SerializationHelper.SerializeValue(IBsonSerializer serializer, ConstantExpression constantExpression, Expression containingExpression)
+   at MongoDB.Driver.Linq.Linq3Implementation.Translators.ExpressionToFilterTranslators.ExpressionTranslators.ComparisonExpressionToFilterTranslator.Translate(TranslationContext context, BinaryExpression expression)
+   at MongoDB.Driver.Linq.Linq3Implementation.Translators.ExpressionToFilterTranslators.ExpressionToFilterTranslator.TranslateUsingQueryOperators(TranslationContext context, Expression expression)
+   at MongoDB.Driver.Linq.Linq3Implementation.Translators.ExpressionToFilterTranslators.ExpressionToFilterTranslator.Translate(TranslationContext context, Expression expression, Boolean exprOk)
+   at MongoDB.Driver.Linq.Linq3Implementation.Translators.ExpressionToFilterTranslators.ExpressionToFilterTranslator.TranslateLambda(TranslationContext context, LambdaExpression lambdaExpression, IBsonSerializer parameterSerializer, Boolean asRoot)
+   at MongoDB.Driver.Linq.LinqProviderAdapter.TranslateExpressionToFilter[TDocument](Expression`1 expression, IBsonSerializer`1 documentSerializer, IBsonSerializerRegistry serializerRegistry, ExpressionTranslationOptions translationOptions)
+   at MongoDB.Driver.ExpressionFilterDefinition`1.Render(RenderArgs`1 args)
+   at MongoDB.Driver.MongoCollectionImpl`1.CreateFindOperation[TProjection](FilterDefinition`1 filter, FindOptions`2 options, RenderArgs`1 renderArgs)
+   at MongoDB.Driver.MongoCollectionImpl`1.FindAsync[TProjection](IClientSessionHandle session, FilterDefinition`1 filter, FindOptions`2 options, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.<>c__DisplayClass53_0`1.<FindAsync>b__0(IClientSessionHandle session)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at MongoDB.Driver.IAsyncCursorSourceExtensions.FirstOrDefaultAsync[TDocument](IAsyncCursorSource`1 source, CancellationToken cancellationToken)
+   at SlotMachineAPI.Infrastructure.Repositories.Repository`1.GetByIdAsync(String id)
+   at SlotMachineAPI.Application.Players.Commands.DeletePlayerHandler.Handle(DeletePlayerCommand request, CancellationToken cancellationToken)
+[2025-02-07 10:53:53 WRN] Player with ID fdasfasd not found. Nothing to delete.
+[2025-02-07 10:53:54 INF] Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-02-07 10:53:54 INF] Executed action SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI) in 7179.6753ms
+[2025-02-07 10:53:54 INF] Executed endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:53:54 INF]  Response: 404 /api/Player/fdasfasd | Time: 7186 ms
+[2025-02-07 10:53:54 INF] Request finished HTTP/2 DELETE https://localhost:44392/api/Player/fdasfasd - 404 null application/json; charset=utf-8 7187.2819ms
+[2025-02-07 10:54:36 INF] Request starting HTTP/2 GET https://localhost:44392/api/Player - null null
+[2025-02-07 10:54:36 INF]  Request: GET /api/Player | Body: /api/Player | IP: ::1
+[2025-02-07 10:54:36 INF] Executing endpoint 'SlotMachineAPI.Controllers.PlayerController.GetAllPlayers (SlotMachineAPI)'
+[2025-02-07 10:54:36 INF] Route matched with {action = "GetAllPlayers", controller = "Player"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllPlayers() on controller SlotMachineAPI.Controllers.PlayerController (SlotMachineAPI).
+[2025-02-07 10:54:36 INF] Fetching all Players from the database
+[2025-02-07 10:54:36 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[SlotMachineAPI.Domain.Player, SlotMachineAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2025-02-07 10:54:36 INF] Executed action SlotMachineAPI.Controllers.PlayerController.GetAllPlayers (SlotMachineAPI) in 16.7907ms
+[2025-02-07 10:54:36 INF] Executed endpoint 'SlotMachineAPI.Controllers.PlayerController.GetAllPlayers (SlotMachineAPI)'
+[2025-02-07 10:54:36 INF]  Response: 200 /api/Player | Time: 23 ms
+[2025-02-07 10:54:36 INF] Request finished HTTP/2 GET https://localhost:44392/api/Player - 200 null application/json; charset=utf-8 23.9369ms
+[2025-02-07 10:54:49 INF] Request starting HTTP/2 DELETE https://localhost:44392/api/Player/67a5332e175f6d97b8e11a76 - null null
+[2025-02-07 10:54:49 INF]  Request: DELETE /api/Player/67a5332e175f6d97b8e11a76 | Body: /api/Player/67a5332e175f6d97b8e11a76 | IP: ::1
+[2025-02-07 10:54:49 INF] Executing endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:54:49 INF] Route matched with {action = "DeletePlayer", controller = "Player"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeletePlayer(System.String) on controller SlotMachineAPI.Controllers.PlayerController (SlotMachineAPI).
+[2025-02-07 10:54:51 INF] Attempting to delete player with ID: 67a5332e175f6d97b8e11a76
+[2025-02-07 10:54:51 INF] Transaction 1d7e15b0-995e-4583-a795-35a30d7577a1 started: Deleting player with ID: 67a5332e175f6d97b8e11a76
+[2025-02-07 10:54:54 INF] Player with ID 67a5332e175f6d97b8e11a76 deleted successfully.
+[2025-02-07 10:54:59 INF] Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-02-07 10:54:59 INF] Executed action SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI) in 10354.7465ms
+[2025-02-07 10:54:59 INF] Executed endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:54:59 INF]  Response: 404 /api/Player/67a5332e175f6d97b8e11a76 | Time: 10382 ms
+[2025-02-07 10:54:59 INF] Request finished HTTP/2 DELETE https://localhost:44392/api/Player/67a5332e175f6d97b8e11a76 - 404 null application/json; charset=utf-8 10386.5523ms
+[2025-02-07 10:56:26 INF] Request starting HTTP/2 GET https://localhost:44392/index.html - null null
+[2025-02-07 10:56:26 INF] Request finished HTTP/2 GET https://localhost:44392/index.html - 200 null text/html;charset=utf-8 8.389ms
+[2025-02-07 10:56:26 INF] Request starting HTTP/2 GET https://localhost:44392/index.js - null null
+[2025-02-07 10:56:26 INF] Request starting HTTP/2 GET https://localhost:44392/_framework/aspnetcore-browser-refresh.js - null null
+[2025-02-07 10:56:26 INF] Request finished HTTP/2 GET https://localhost:44392/_framework/aspnetcore-browser-refresh.js - 200 13780 application/javascript; charset=utf-8 0.5218ms
+[2025-02-07 10:56:26 INF] Request finished HTTP/2 GET https://localhost:44392/index.js - 200 null application/javascript;charset=utf-8 0.9892ms
+[2025-02-07 10:56:26 INF] Request starting HTTP/2 GET https://localhost:44392/_vs/browserLink - null null
+[2025-02-07 10:56:26 INF] Request finished HTTP/2 GET https://localhost:44392/_vs/browserLink - 200 null text/javascript; charset=UTF-8 6.5903ms
+[2025-02-07 10:56:26 INF] Request starting HTTP/2 GET https://localhost:44392/swagger/v1/swagger.json - null null
+[2025-02-07 10:56:26 INF] Request finished HTTP/2 GET https://localhost:44392/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 2.0492ms
+[2025-02-07 10:56:40 INF] Request starting HTTP/2 DELETE https://localhost:44392/api/Player/67a5332e175f6d97b8e47a11 - null null
+[2025-02-07 10:56:40 INF]  Request: DELETE /api/Player/67a5332e175f6d97b8e47a11 | Body: /api/Player/67a5332e175f6d97b8e47a11 | IP: ::1
+[2025-02-07 10:56:40 INF] Executing endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:56:40 INF] Route matched with {action = "DeletePlayer", controller = "Player"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeletePlayer(System.String) on controller SlotMachineAPI.Controllers.PlayerController (SlotMachineAPI).
+[2025-02-07 10:56:42 INF] Attempting to delete player with ID: 67a5332e175f6d97b8e47a11
+[2025-02-07 10:56:45 INF] Transaction 387baf11-2d32-4efc-bf37-519af404c541 started: Deleting player with ID: 67a5332e175f6d97b8e47a11
+[2025-02-07 10:56:52 WRN] Player with ID 67a5332e175f6d97b8e47a11 not found. Nothing to delete.
+[2025-02-07 10:56:54 INF] Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-02-07 10:56:54 INF] Executed action SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI) in 13720.0589ms
+[2025-02-07 10:56:54 INF] Executed endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:56:54 INF]  Response: 404 /api/Player/67a5332e175f6d97b8e47a11 | Time: 13724 ms
+[2025-02-07 10:56:54 INF] Request finished HTTP/2 DELETE https://localhost:44392/api/Player/67a5332e175f6d97b8e47a11 - 404 null application/json; charset=utf-8 13724.7154ms
+[2025-02-07 10:57:00 INF] Request starting HTTP/2 DELETE https://localhost:44392/api/Player/dsfadfsd2 - null null
+[2025-02-07 10:57:00 INF]  Request: DELETE /api/Player/dsfadfsd2 | Body: /api/Player/dsfadfsd2 | IP: ::1
+[2025-02-07 10:57:00 INF] Executing endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:57:00 INF] Route matched with {action = "DeletePlayer", controller = "Player"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeletePlayer(System.String) on controller SlotMachineAPI.Controllers.PlayerController (SlotMachineAPI).
+[2025-02-07 10:57:02 INF] Attempting to delete player with ID: dsfadfsd2
+[2025-02-07 10:57:02 INF] Transaction 6eec49d1-1b41-46c5-8a7c-39e0a8cd4772 started: Deleting player with ID: dsfadfsd2
+[2025-02-07 10:57:04 ERR] Transaction 6eec49d1-1b41-46c5-8a7c-39e0a8cd4772 failed: An error occurred while deleting the player with ID dsfadfsd2.
+System.FormatException: 'dsfadfsd2' is not a valid 24 digit hex string.
+   at MongoDB.Bson.ObjectId.Parse(String s)
+   at MongoDB.Bson.Serialization.Serializers.StringSerializer.SerializeValue(BsonSerializationContext context, BsonSerializationArgs args, String value)
+   at MongoDB.Bson.Serialization.Serializers.SealedClassSerializerBase`1.Serialize(BsonSerializationContext context, BsonSerializationArgs args, TValue value)
+   at MongoDB.Bson.Serialization.IBsonSerializerExtensions.Serialize(IBsonSerializer serializer, BsonSerializationContext context, Object value)
+   at MongoDB.Driver.Linq.Linq3Implementation.Misc.SerializationHelper.SerializeValue(IBsonSerializer serializer, Object value)
+   at MongoDB.Driver.Linq.Linq3Implementation.Misc.SerializationHelper.SerializeValue(IBsonSerializer serializer, ConstantExpression constantExpression, Expression containingExpression)
+   at MongoDB.Driver.Linq.Linq3Implementation.Translators.ExpressionToFilterTranslators.ExpressionTranslators.ComparisonExpressionToFilterTranslator.Translate(TranslationContext context, BinaryExpression expression)
+   at MongoDB.Driver.Linq.Linq3Implementation.Translators.ExpressionToFilterTranslators.ExpressionToFilterTranslator.TranslateUsingQueryOperators(TranslationContext context, Expression expression)
+   at MongoDB.Driver.Linq.Linq3Implementation.Translators.ExpressionToFilterTranslators.ExpressionToFilterTranslator.Translate(TranslationContext context, Expression expression, Boolean exprOk)
+   at MongoDB.Driver.Linq.Linq3Implementation.Translators.ExpressionToFilterTranslators.ExpressionToFilterTranslator.TranslateLambda(TranslationContext context, LambdaExpression lambdaExpression, IBsonSerializer parameterSerializer, Boolean asRoot)
+   at MongoDB.Driver.Linq.LinqProviderAdapter.TranslateExpressionToFilter[TDocument](Expression`1 expression, IBsonSerializer`1 documentSerializer, IBsonSerializerRegistry serializerRegistry, ExpressionTranslationOptions translationOptions)
+   at MongoDB.Driver.ExpressionFilterDefinition`1.Render(RenderArgs`1 args)
+   at MongoDB.Driver.MongoCollectionImpl`1.CreateFindOperation[TProjection](FilterDefinition`1 filter, FindOptions`2 options, RenderArgs`1 renderArgs)
+   at MongoDB.Driver.MongoCollectionImpl`1.FindAsync[TProjection](IClientSessionHandle session, FilterDefinition`1 filter, FindOptions`2 options, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.<>c__DisplayClass53_0`1.<FindAsync>b__0(IClientSessionHandle session)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at MongoDB.Driver.IAsyncCursorSourceExtensions.FirstOrDefaultAsync[TDocument](IAsyncCursorSource`1 source, CancellationToken cancellationToken)
+   at SlotMachineAPI.Infrastructure.Repositories.Repository`1.GetByIdAsync(String id)
+   at SlotMachineAPI.Application.Players.Commands.DeletePlayerHandler.Handle(DeletePlayerCommand request, CancellationToken cancellationToken)
+[2025-02-07 10:57:05 INF] Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2025-02-07 10:57:05 INF] Executed action SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI) in 4116.8998ms
+[2025-02-07 10:57:05 INF] Executed endpoint 'SlotMachineAPI.Controllers.PlayerController.DeletePlayer (SlotMachineAPI)'
+[2025-02-07 10:57:05 INF]  Response: 404 /api/Player/dsfadfsd2 | Time: 4117 ms
+[2025-02-07 10:57:05 INF] Request finished HTTP/2 DELETE https://localhost:44392/api/Player/dsfadfsd2 - 404 null application/json; charset=utf-8 4118.0844ms

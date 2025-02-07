@@ -34,7 +34,8 @@ namespace SlotMachineAPI.Application.Players.Commands
                 matrix[i] = new int[cols];
                 for (int j = 0; j < cols; j++)
                 {
-                    matrix[i][j] = _random.Next(0, 10);
+                    matrix[i][j] = _random.Next(0, 7); 
+
                 }
             }
 
@@ -53,14 +54,37 @@ namespace SlotMachineAPI.Application.Players.Commands
         private decimal CalculateWin(int[][] matrix, decimal betAmount)
         {
             decimal totalWin = 0;
-            for (int i = 0; i < matrix.Length; i++)
+
+            foreach (var row in matrix)
             {
-                int[] row = matrix[i];
-                if (row.Distinct().Count() == 1) 
+                int consecutiveSum = row[0];
+                int count = 1;
+
+                for (int j = 1; j < row.Length; j++)
                 {
-                    totalWin += betAmount * 2; 
+                    if (row[j] == row[j - 1])
+                    {
+                        consecutiveSum += row[j];
+                        count++;
+                    }
+                    else
+                    {
+                        if (count > 2) // En az 3 aynı sayı olmalı (Task'e uygun)
+                        {
+                            totalWin += (betAmount * consecutiveSum) * 0.5m; // Çarpanı 0.5 yaptık!
+                        }
+
+                        consecutiveSum = row[j];
+                        count = 1;
+                    }
+                }
+
+                if (count > 2)
+                {
+                    totalWin += (betAmount * consecutiveSum) * 0.5m;
                 }
             }
+
             return totalWin;
         }
     }

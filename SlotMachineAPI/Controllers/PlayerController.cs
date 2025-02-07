@@ -79,11 +79,16 @@ namespace SlotMachineAPI.Controllers
             });
         }
 
-        [HttpPost("spin")]
-        public async Task<IActionResult> Spin([FromBody] SpinCommand command)
+        [HttpPost("spin/{playerId}")]
+        public async Task<IActionResult> Spin(string playerId, decimal betAmount)
         {
-            var result = await _mediator.Send(command);
-            return Ok(result);
+            var player = await _mediator.Send(new SpinCommand { PlayerId = playerId , BetAmount = betAmount });
+            if (player == null)
+                return NotFound(new
+                {
+                    message = "Player not found"
+                });
+            return Ok(player);
         }
     }
 }
