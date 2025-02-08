@@ -71,20 +71,89 @@ namespace SlotMachineAPI.Application.Players.Commands.SpindCommand
             }
             return matrix;
         }
-
         private decimal CalculateWin(int[][] matrix, decimal betAmount)
         {
             decimal totalWin = 0;
 
-            foreach (var row in matrix)
+            int rows = matrix.Length;
+            int cols = matrix[0].Length;
+
+            for (int i = 0; i < rows; i++)
             {
-                totalWin += CalculateLineWin(row, betAmount);
+                int count = 1;
+                int sum = matrix[i][0];
+
+                for (int j = 1; j < cols; j++)
+                {
+                    if (matrix[i][j] == matrix[i][j - 1])
+                    {
+                        sum += matrix[i][j];
+                        count++;
+                    }
+                    else
+                    {
+                        if (count > 2)
+                            totalWin += betAmount * sum;
+                        sum = matrix[i][j];
+                        count = 1;
+                    }
+                }
+                if (count > 2)
+                    totalWin += betAmount * sum;
             }
 
-            totalWin += CalculateDiagonalWin(matrix, betAmount);
+            for (int startCol = 0; startCol < cols - 2; startCol++)
+            {
+                int count = 1;
+                int sum = matrix[0][startCol];
+
+                for (int i = 1, j = startCol + 1; i < rows && j < cols; i++, j++)
+                {
+                    if (matrix[i][j] == matrix[i - 1][j - 1])
+                    {
+                        sum += matrix[i][j];
+                        count++;
+                    }
+                    else
+                    {
+                        if (count > 2)
+                            totalWin += betAmount * sum;
+                        sum = matrix[i][j];
+                        count = 1;
+                    }
+                }
+                if (count > 2)
+                    totalWin += betAmount * sum;
+            }
+
+            for (int startCol = cols - 1; startCol >= 2; startCol--)
+            {
+                int count = 1;
+                int sum = matrix[0][startCol];
+
+                for (int i = 1, j = startCol - 1; i < rows && j >= 0; i++, j--)
+                {
+                    if (matrix[i][j] == matrix[i - 1][j + 1])
+                    {
+                        sum += matrix[i][j];
+                        count++;
+                    }
+                    else
+                    {
+                        if (count > 2)
+                            totalWin += betAmount * sum;
+                        sum = matrix[i][j];
+                        count = 1;
+                    }
+                }
+                if (count > 2)
+                    totalWin += betAmount * sum;
+            }
 
             return totalWin;
         }
+
+
 
         private decimal CalculateLineWin(int[] line, decimal betAmount)
         {

@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlotMachineAPI", "SlotMachineAPI\SlotMachineAPI.csproj", "{02E846BE-861A-44CB-9C19-D1ABB68CDB43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{CBE7BE1F-8273-44D4-BF69-AE8239F5C68D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{02E846BE-861A-44CB-9C19-D1ABB68CDB43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02E846BE-861A-44CB-9C19-D1ABB68CDB43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02E846BE-861A-44CB-9C19-D1ABB68CDB43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBE7BE1F-8273-44D4-BF69-AE8239F5C68D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBE7BE1F-8273-44D4-BF69-AE8239F5C68D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBE7BE1F-8273-44D4-BF69-AE8239F5C68D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBE7BE1F-8273-44D4-BF69-AE8239F5C68D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,10 +15,10 @@ namespace SlotMachineAPI.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost("spin/{playerId}")]
-        public async Task<IActionResult> Spin(string playerId, decimal betAmount)
+        [HttpPost("spin/playerId")]
+        public async Task<IActionResult> Spin([FromBody] SpinCommand command)
         {
-            var player = await _mediator.Send(new SpinCommand { PlayerId = playerId, BetAmount = betAmount });
+            var player = await _mediator.Send(command);
 
             if (player is null)
                 return NotFound(new
