@@ -5,50 +5,63 @@ using SlotMachineAPI.Infrastructure.Repositories;
 
 namespace SlotMachineAPI.Application.Players.Commands.SpindCommand
 {
-    public class SpinCommandHandler : IRequestHandler<SpinCommand, SpinResult>
+    public class SpinHandler : IRequestHandler<SpinCommand, SpinResult>
     {
-
         private readonly IPlayerRepository _playerRepository;
-        private readonly Random _random = new Random();
+        private readonly ILogger<SpinHandler> _logger;
+        private readonly Random _random = new();
 
-        public SpinCommandHandler(IPlayerRepository playerRepository)
+        public SpinHandler(IPlayerRepository playerRepository, ILogger<SpinHandler> logger)
         {
             _playerRepository = playerRepository;
+            _logger = logger;
         }
 
         public async Task<SpinResult> Handle(SpinCommand request, CancellationToken cancellationToken)
         {
-            Log.Information(" The spin process has been started! PlayerID: {PlayerId}, BetAmount: {BetAmount}",
+            _logger.LogInformation("Processing spin for PlayerId: {PlayerId} with BetAmount: {BetAmount}",
                 request.PlayerId, request.BetAmount);
 
             var player = await _playerRepository.GetByIdAsync(request.PlayerId);
 
-            if (player == null || player.Balance < request.BetAmount)
+            if (player == null)
             {
-                Log.Warning(" The spin operation failed! The player could not be found or the balance is insufficient.PlayerID: {PlayerId}, Balance: {Balance}, BetAmount: {BetAmount}",
-                    request.PlayerId, player?.Balance ?? 0, request.BetAmount);
-
-                return new SpinResult
-                {
-                    Matrix = null,
-                    WinAmount = 0,
-                    CurrentBalance = player?.Balance ?? 0
-                };
+                _logger.LogWarning("Player with ID {PlayerId} not found!", request.PlayerId);
+                throw new KeyNotFoundException($"Player with ID {request.PlayerId} not found!");
             }
 
+            if (player.Balance < request.BetAmount)
+            {
+                _logger.LogWarning("Insufficient balance for PlayerId: {PlayerId}", request.PlayerId);
+                throw new InvalidOperationException("Insufficient balance.");
+            }
+
+            // 1. Oyuncunun bakiyesinden bahsi düş
             player.Balance -= request.BetAmount;
 
+            // 2. Slot Matrix (5x3) rastgele oluşturulmalı
             int rows = 3, cols = 5;
-            int[][] matrix = GenerateRandomMatrix(rows, cols);
+            int[][] matrix = new int[rows][];
+            for (int i = 0; i < rows; i++)
+            {
+                matrix[i] = new int[cols];
+                for (int j = 0; j < cols; j++)
+                {
+                    matrix[i][j] = _random.Next(0, 10); // 0-9 arası rastgele sayılar
+                }
+            }
 
+            // 3. Kazanç hesaplanmalı
             decimal winAmount = CalculateWin(matrix, request.BetAmount);
 
+            // 4. Kazanç oyuncunun bakiyesine eklenmeli
             player.Balance += winAmount;
 
+            // 5. Güncellenmiş oyuncu verisini kaydet
             await _playerRepository.UpdateAsync(player.Id, player);
 
-            Log.Information(" The spin is complete! WinAmount: {WinAmount}, NewBalance: {NewBalance}",
-                winAmount, player.Balance);
+            _logger.LogInformation("Spin completed. PlayerId: {PlayerId}, WinAmount: {WinAmount}, NewBalance: {NewBalance}",
+                request.PlayerId, winAmount, player.Balance);
 
             return new SpinResult
             {
@@ -58,107 +71,32 @@ namespace SlotMachineAPI.Application.Players.Commands.SpindCommand
             };
         }
 
-        private int[][] GenerateRandomMatrix(int rows, int cols)
-        {
-            int[][] matrix = new int[rows][];
-            for (int i = 0; i < rows; i++)
-            {
-                matrix[i] = new int[cols];
-                for (int j = 0; j < cols; j++)
-                {
-                    matrix[i][j] = _random.Next(0, 10);
-                }
-            }
-            return matrix;
-        }
         private decimal CalculateWin(int[][] matrix, decimal betAmount)
         {
             decimal totalWin = 0;
 
-            int rows = matrix.Length;
-            int cols = matrix[0].Length;
-
-            for (int i = 0; i < rows; i++)
+            // 1. Yatay (row) kontrolleri: Aynı sırada 3 veya daha fazla sayı olmalı
+            foreach (var row in matrix)
             {
-                int count = 1;
-                int sum = matrix[i][0];
-
-                for (int j = 1; j < cols; j++)
-                {
-                    if (matrix[i][j] == matrix[i][j - 1])
-                    {
-                        sum += matrix[i][j];
-                        count++;
-                    }
-                    else
-                    {
-                        if (count > 2)
-                            totalWin += betAmount * sum;
-                        sum = matrix[i][j];
-                        count = 1;
-                    }
-                }
-                if (count > 2)
-                    totalWin += betAmount * sum;
+                totalWin += CalculateLineWin(row, betAmount);
             }
 
-            for (int startCol = 0; startCol < cols - 2; startCol++)
-            {
-                int count = 1;
-                int sum = matrix[0][startCol];
+            // 2. Sol üstten sağ alta diagonal kontrolü
+            int[] diagonal1 = { matrix[0][0], matrix[1][1], matrix[2][2] };
+            totalWin += CalculateLineWin(diagonal1, betAmount);
 
-                for (int i = 1, j = startCol + 1; i < rows && j < cols; i++, j++)
-                {
-                    if (matrix[i][j] == matrix[i - 1][j - 1])
-                    {
-                        sum += matrix[i][j];
-                        count++;
-                    }
-                    else
-                    {
-                        if (count > 2)
-                            totalWin += betAmount * sum;
-                        sum = matrix[i][j];
-                        count = 1;
-                    }
-                }
-                if (count > 2)
-                    totalWin += betAmount * sum;
-            }
-
-            for (int startCol = cols - 1; startCol >= 2; startCol--)
-            {
-                int count = 1;
-                int sum = matrix[0][startCol];
-
-                for (int i = 1, j = startCol - 1; i < rows && j >= 0; i++, j--)
-                {
-                    if (matrix[i][j] == matrix[i - 1][j + 1])
-                    {
-                        sum += matrix[i][j];
-                        count++;
-                    }
-                    else
-                    {
-                        if (count > 2)
-                            totalWin += betAmount * sum;
-                        sum = matrix[i][j];
-                        count = 1;
-                    }
-                }
-                if (count > 2)
-                    totalWin += betAmount * sum;
-            }
+            // 3. Sağ üstten sol alta diagonal kontrolü
+            int[] diagonal2 = { matrix[0][2], matrix[1][1], matrix[2][0] };
+            totalWin += CalculateLineWin(diagonal2, betAmount);
 
             return totalWin;
         }
 
-
-
         private decimal CalculateLineWin(int[] line, decimal betAmount)
         {
             decimal win = 0;
-            int consecutiveSum = line[0], count = 1;
+            int consecutiveSum = line[0];
+            int count = 1;
 
             for (int i = 1; i < line.Length; i++)
             {
@@ -169,7 +107,7 @@ namespace SlotMachineAPI.Application.Players.Commands.SpindCommand
                 }
                 else
                 {
-                    if (count > 2)
+                    if (count >= 3)
                     {
                         win += betAmount * consecutiveSum;
                     }
@@ -178,55 +116,7 @@ namespace SlotMachineAPI.Application.Players.Commands.SpindCommand
                 }
             }
 
-            if (count > 2)
-            {
-                win += betAmount * consecutiveSum;
-            }
-
-            return win;
-        }
-
-        private decimal CalculateDiagonalWin(int[][] matrix, decimal betAmount)
-        {
-            decimal diagonalWin = 0;
-            int rows = matrix.Length, cols = matrix[0].Length;
-
-            diagonalWin += CalculateDiagonal(matrix, 0, 0, 1, 1, betAmount);
-
-            diagonalWin += CalculateDiagonal(matrix, 0, 0, 1, 1, betAmount);
-            diagonalWin += CalculateDiagonal(matrix, rows - 1, 0, -1, 1, betAmount);
-
-            return diagonalWin;
-        }
-
-        private decimal CalculateDiagonal(int[][] matrix, int startX, int startY, int stepX, int stepY, decimal betAmount)
-        {
-            decimal win = 0;
-            int x = startX, y = startY;
-            int consecutiveSum = matrix[x][y], count = 1;
-
-            while (x + stepX >= 0 && x + stepX < matrix.Length && y + stepY < matrix[0].Length)
-            {
-                x += stepX;
-                y += stepY;
-
-                if (matrix[x][y] == matrix[x - stepX][y - stepY])
-                {
-                    consecutiveSum += matrix[x][y];
-                    count++;
-                }
-                else
-                {
-                    if (count > 2)
-                    {
-                        win += betAmount * consecutiveSum;
-                    }
-                    consecutiveSum = matrix[x][y];
-                    count = 1;
-                }
-            }
-
-            if (count > 2)
+            if (count >= 3)
             {
                 win += betAmount * consecutiveSum;
             }
@@ -234,5 +124,4 @@ namespace SlotMachineAPI.Application.Players.Commands.SpindCommand
             return win;
         }
     }
-
 }
