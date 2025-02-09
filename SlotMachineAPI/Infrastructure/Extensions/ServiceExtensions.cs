@@ -14,6 +14,14 @@ using System.Text;
 
 public static class ServiceExtensions
 {
+    /// <summary>
+    /// Configures and registers all application-wide services.
+    /// This includes logging, database configurations, dependency injection, authentication, validation etc. .
+    /// Ensures all required services are properly initialized at application startup.
+    /// </summary>
+    /// <param name="services">The service collection to which dependencies are added.</param>
+    /// <param name="configuration">Application configuration settings.</param>
+
     public static void AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
     {
         // Serilog Configuration
@@ -67,7 +75,6 @@ public static class ServiceExtensions
 
         // Jtw Configuration
         var key = Encoding.UTF8.GetBytes(configuration["Jwt:Key"] ?? "DefaultSecretKey");
-
         services.AddAuthorization();
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>

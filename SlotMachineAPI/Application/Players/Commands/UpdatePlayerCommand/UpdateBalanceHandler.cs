@@ -11,7 +11,17 @@ namespace SlotMachineAPI.Application.Players.Commands.UpdatePlayerCommand
         {
             _playerRepository = playerRepository;
             _logger = logger;
-        }       
+        }
+
+        /// <summary>
+        /// Handles the balance update operation for a player.
+        /// Ensures that the player exists and has sufficient balance before updating.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        /// <exception cref="KeyNotFoundException"></exception>
+        /// <exception cref="InvalidOperationException"></exception>
         public async Task<bool> Handle(UpdateBalanceCommand request, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Updating balance for Player with ID: {PlayerId}", request.PlayerId);

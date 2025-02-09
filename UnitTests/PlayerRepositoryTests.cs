@@ -16,6 +16,10 @@ namespace SlotMachineAPI.Tests.Repositories
             _playerRepositoryMock = new Mock<IPlayerRepository>();
         }
 
+        /// <summary>
+        /// Unit test to verify that a new player is successfully added to the database.
+        /// Ensures that the add operation is called exactly once with the correct player object.
+        /// </summary>
         [Fact]
         public async Task AddPlayer_ShouldAddNewPlayer()
         {
@@ -31,6 +35,10 @@ namespace SlotMachineAPI.Tests.Repositories
             _playerRepositoryMock.Verify(repo => repo.AddAsync(It.IsAny<Player>()), Times.Once);
         }
 
+        /// <summary>
+        /// Unit test to verify that a player is correctly retrieved by their unique ID.
+        /// Ensures that the returned player object is not null and has the expected name and balance.
+        /// </summary>
         [Fact]
         public async Task GetPlayerById_ShouldReturnPlayer()
         {
@@ -48,6 +56,10 @@ namespace SlotMachineAPI.Tests.Repositories
             Assert.Equal(0, result.Balance);
         }
 
+        /// <summary>
+        /// Unit test to verify that a player's balance is successfully modified during an update operation.
+        /// Ensures that the update method is called exactly once with the correct player ID and updated balance.
+        /// </summary>
         [Fact]
         public async Task UpdatePlayer_ShouldModifyPlayerBalance()
         {
@@ -64,6 +76,10 @@ namespace SlotMachineAPI.Tests.Repositories
             _playerRepositoryMock.Verify(repo => repo.UpdateAsync(player.Id, player), Times.Once);
         }
 
+        /// <summary>
+        /// Unit test to verify that a player is successfully removed from the database.
+        /// Ensures that the delete operation is called exactly once for the specified player ID.
+        /// </summary>
         [Fact]
         public async Task DeletePlayer_ShouldRemovePlayer()
         {

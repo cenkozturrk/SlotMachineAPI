@@ -3,13 +3,15 @@ using Serilog;
 
 public class LoggingMiddleware
 {
+    /// <summary>
+    /// Middleware for logging HTTP requests and responses.
+    /// Measures execution time and logs any errors that occur during request processing.
+    /// </summary>
     private readonly RequestDelegate _next;
-
     public LoggingMiddleware(RequestDelegate next)
     {
         _next = next;
     }
-
     public async Task Invoke(HttpContext context)
     {
         var stopwatch = Stopwatch.StartNew();

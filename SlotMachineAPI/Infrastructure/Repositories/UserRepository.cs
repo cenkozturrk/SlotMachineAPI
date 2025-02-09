@@ -5,6 +5,10 @@ using SlotMachineAPI.Infrastructure.Context;
 
 namespace SlotMachineAPI.Infrastructure.Repositories
 {
+    /// <summary>
+    /// Repository class for managing user-related database operations using MongoDB.
+    /// Provides methods to retrieve users by email and refresh token, as well as adding and updating users.
+    /// </summary>
     public class UserRepository : IUserRepository
     {
         private readonly IMongoCollection<User> _users;

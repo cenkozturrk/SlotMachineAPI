@@ -24,6 +24,10 @@ namespace SlotMachineAPI.Tests.Handlers
             _handler = new SpinHandler(_playerRepositoryMock.Object, _loggerMock.Object);
         }
 
+        /// <summary>
+        /// Unit test to verify that the Spin operation generates a correctly sized slot matrix.
+        /// Ensures that the matrix consists of 3 rows and each row contains exactly 5 elements.
+        /// </summary>
         [Fact]
         public async Task Spin_ShouldGenerateCorrectMatrixSize()
         {
@@ -39,10 +43,14 @@ namespace SlotMachineAPI.Tests.Handlers
 
             // Assert
             Assert.NotNull(result.Matrix);
-            Assert.Equal(3, result.Matrix.Length); // 3 satır olmalı
-            Assert.All(result.Matrix, row => Assert.Equal(5, row.Length)); // Her satırda 5 eleman olmalı
+            Assert.Equal(3, result.Matrix.Length); // there should be 3 lines
+            Assert.All(result.Matrix, row => Assert.Equal(5, row.Length)); // There should be 5 elements in each row
         }
 
+        /// <summary>
+        /// Unit test to verify that a player's balance is correctly decreased after placing a bet.
+        /// Ensures that the balance is reduced by at least the bet amount after a spin.
+        /// </summary>
         [Fact]
         public async Task Spin_ShouldDecreaseBalanceAfterBet()
         {
@@ -61,6 +69,10 @@ namespace SlotMachineAPI.Tests.Handlers
             Assert.True(player.Balance >= 100 - command.BetAmount); 
         }
 
+        /// <summary>
+        /// Unit test to verify that an exception is thrown when a player attempts to spin with insufficient balance.
+        /// Ensures that the balance remains unchanged and no update operation is performed in such cases.
+        /// </summary>
         [Fact]
         public async Task Spin_ShouldThrowException_WhenInsufficientBalance()
         {
@@ -75,6 +87,10 @@ namespace SlotMachineAPI.Tests.Handlers
             _playerRepositoryMock.Verify(repo => repo.UpdateAsync(It.IsAny<string>(), It.IsAny<Player>()), Times.Never);
         }
 
+        /// <summary>
+        /// Unit test to verify that a KeyNotFoundException is thrown when attempting to spin with a non-existent player ID.
+        /// Ensures that no further processing occurs if the player is not found in the database.
+        /// </summary>
         [Fact]
         public async Task Spin_ShouldThrowException_WhenPlayerNotFound()
         {
@@ -87,6 +103,10 @@ namespace SlotMachineAPI.Tests.Handlers
             await Assert.ThrowsAsync<KeyNotFoundException>(() => _handler.Handle(command, CancellationToken.None));
         }
 
+        /// <summary>
+        /// Unit test to verify that the spin operation correctly calculates the win amount.
+        /// Ensures that the win amount is never negative and that the player's balance is updated accordingly after a spin.
+        /// </summary>
         [Fact]
         public async Task Spin_ShouldCorrectlyCalculateWinAmount()
         {
@@ -101,8 +121,8 @@ namespace SlotMachineAPI.Tests.Handlers
             var result = await _handler.Handle(command, CancellationToken.None);
 
             // Assert
-            Assert.True(result.WinAmount >= 0); // WinAmount negatif olamaz
-            Assert.True(result.CurrentBalance >= player.Balance); // Kazanç sonrası bakiye en az başlangıç bakiyesi kadar olmalı
+            Assert.True(result.WinAmount >= 0); // WinAmount cannot be negative
+            Assert.True(result.CurrentBalance >= player.Balance); // The post-earnings balance should be at least the same as the initial balance
         }
     }
 }

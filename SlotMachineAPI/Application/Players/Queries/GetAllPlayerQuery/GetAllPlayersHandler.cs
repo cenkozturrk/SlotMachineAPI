@@ -15,6 +15,13 @@ namespace SlotMachineAPI.Application.Players.Queries.GetAllPlayer
             _logger = logger;
         }
 
+        /// <summary>
+        /// Handles the retrieval of all players from the database.
+        /// </summary>
+        /// <param name="request">The request object for retrieving all players.</param>
+        /// <param name="cancellationToken">Cancellation token for the async operation.</param>
+        /// <returns>A list of all players stored in the database.</returns>
+        /// <exception cref="Exception">Logs and rethrows any unexpected errors that occur during data retrieval.</exception>
         public async Task<List<Player>> Handle(GetAllPlayersQuery request, CancellationToken cancellationToken)
         {
             try

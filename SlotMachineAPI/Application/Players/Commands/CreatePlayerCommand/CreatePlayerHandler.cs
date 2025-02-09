@@ -14,6 +14,17 @@ namespace SlotMachineAPI.Application.Players.Commands.CreatePlayerCommand
             _playerRepository = playerRepository;
             _logger = logger;
         }
+
+        /// <summary>
+        /// Handles the creation of a new player.
+        /// Ensures the request is valid, assigns a default balance, and saves the player to the database.
+        /// </summary>
+        /// <param name="request">The player creation request containing the player's name.</param>
+        /// <param name="cancellationToken">Cancellation token for the async operation.</param>
+        /// <returns>The unique identifier of the newly created player.</returns>
+        /// <exception cref="ArgumentNullException">Thrown if the request is null.</exception>
+        /// <exception cref="Exception">Logs and rethrows any unexpected errors during the player creation process.</exception>
+
         public async Task<string> Handle(CreatePlayerCommand request, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Adding a new Player.");

@@ -4,6 +4,10 @@ using System.Text.Json;
 
 namespace SlotMachineAPI.Middleware
 {
+    /// <summary>
+    /// Middleware for handling global exceptions.
+    /// Logs errors and returns user-friendly error messages.
+    /// </summary>
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;

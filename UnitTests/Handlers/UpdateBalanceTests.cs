@@ -23,6 +23,10 @@ namespace SlotMachineAPI.Tests.Handlers
             _handler = new UpdateBalanceHandler(_playerRepositoryMock.Object, _loggerMock.Object);
         }
 
+        /// <summary>
+        /// Unit test to verify that a player's balance correctly increases when a positive amount is applied.
+        /// Ensures that the balance is updated correctly and that the update operation is performed once.
+        /// </summary>
         [Fact]
         public async Task UpdateBalance_ShouldIncreaseBalance()
         {
@@ -42,6 +46,10 @@ namespace SlotMachineAPI.Tests.Handlers
             _playerRepositoryMock.Verify(repo => repo.UpdateAsync(player.Id, player), Times.Once);
         }
 
+        /// <summary>
+        /// Unit test to verify that a player's balance correctly decreases when a negative amount is applied.
+        /// Ensures that the balance is reduced by the specified amount and that the update operation is performed once.
+        /// </summary>
         [Fact]
         public async Task UpdateBalance_ShouldDecreaseBalance()
         {
@@ -61,6 +69,10 @@ namespace SlotMachineAPI.Tests.Handlers
             _playerRepositoryMock.Verify(repo => repo.UpdateAsync(player.Id, player), Times.Once);
         }
 
+        /// <summary>
+        /// Unit test to verify that an InvalidOperationException is thrown when attempting to update a player's balance below zero.
+        /// Ensures that the balance remains unchanged and no update operation is performed if the balance would become negative.
+        /// </summary>
         [Fact]
         public async Task UpdateBalance_ShouldNotAllowNegativeBalance()
         {
@@ -75,6 +87,10 @@ namespace SlotMachineAPI.Tests.Handlers
             _playerRepositoryMock.Verify(repo => repo.UpdateAsync(player.Id, player), Times.Never);
         }
 
+        /// <summary>
+        /// Unit test to verify that a KeyNotFoundException is thrown when attempting to update the balance of a non-existent player.
+        /// Ensures that no update operation is performed if the player is not found in the database.
+        /// </summary>
         [Fact]
         public async Task UpdateBalance_ShouldThrowException_WhenPlayerNotFound()
         {

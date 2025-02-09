@@ -7,6 +7,11 @@ using System.Text;
 
 namespace SlotMachineAPI.Infrastructure.Service
 {
+    /// <summary>
+    /// Service responsible for handling authentication and authorization operations.
+    /// Provides functionalities for user login, registration, and token refreshing.
+    /// Manages JWT and refresh token generation to maintain secure authentication.
+    /// </summary>
     public class AuthService
     {
         private readonly IUserRepository _userRepository;

@@ -6,6 +6,8 @@ builder.Host.UseSerilog();
 
 builder.Services.AddApplicationServices(builder.Configuration);
 
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

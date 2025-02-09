@@ -4,6 +4,12 @@ using SlotMachineAPI.Infrastructure.Context;
 
 namespace SlotMachineAPI.Infrastructure.Repositories
 {
+    /// <summary>
+    /// Generic repository implementation for MongoDB.
+    /// Provides common data access operations such as retrieving, adding, updating, and deleting entities.
+    /// Designed to be used with any entity that implements the <see cref="IEntity"/> interface.
+    /// </summary>
+    /// <typeparam name="T">The type of entity being managed by the repository.</typeparam>
     public class Repository<T> : IRepository<T> where T : IEntity
     {
         private readonly IMongoCollection<T> _collection;
