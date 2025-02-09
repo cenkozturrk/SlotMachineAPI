@@ -37,7 +37,6 @@
 
   <ItemGroup>
     <Folder Include="Infrastructure\Identity\" />
-    <Folder Include="Infrastructure\Logging\" />
   </ItemGroup>
 
 </Project>

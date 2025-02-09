@@ -16,7 +16,7 @@ namespace SlotMachineAPI.Controllers
             _mediator = mediator;
         }
 
-        [Authorize(Roles = "User")]
+        [Authorize(Roles = "Admin,User")]
         [HttpPost("spin/playerId")]
         public async Task<IActionResult> Spin([FromBody] SpinCommand command)
         {

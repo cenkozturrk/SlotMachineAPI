@@ -38,7 +38,7 @@ namespace SlotMachineAPI.Controllers
             return Ok(new
             {
                 AccessToken = accessToken,
-                RefreshToken = refreshToken
+                RefreshToken = refreshToken,
             });
         }
 
