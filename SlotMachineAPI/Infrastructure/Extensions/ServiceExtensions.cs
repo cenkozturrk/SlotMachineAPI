@@ -6,6 +6,7 @@ using Serilog;
 using SlotMachineAPI.Application.Players.Commands.SpindCommand;
 using SlotMachineAPI.Infrastructure.Context;
 using SlotMachineAPI.Infrastructure.Repositories;
+using SlotMachineAPI.Infrastructure.Service;
 using System.Reflection;
 
 public static class ServiceExtensions
@@ -35,6 +36,10 @@ public static class ServiceExtensions
         {
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "MongoDBTest API", Version = "v1" });
         });
+
+        // Auth Configuration
+        services.AddSingleton<IUserRepository, UserRepository>();
+        services.AddSingleton<AuthService>();
 
         services.AddControllers();
     }

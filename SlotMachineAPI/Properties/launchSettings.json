@@ -22,19 +22,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
-    },
-    "Container (Dockerfile)": {
-      "commandName": "Docker",
-      "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
-      "environmentVariables": {
-        "ASPNETCORE_URLS": "http://+:5000;https://+:5001",
-        "DOTNET_USE_POLLING_FILE_WATCHER": "1"
-      },
-      "publishAllPorts": true,
-      "useSSL": false
     }
-
   },
   "$schema": "https://json.schemastore.org/launchsettings.json",
   "iisSettings": {
