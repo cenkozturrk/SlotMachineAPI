@@ -1,6 +1,8 @@
 ﻿using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using SlotMachineAPI.Application.Players.Commands.SpindCommand;
@@ -8,6 +10,7 @@ using SlotMachineAPI.Infrastructure.Context;
 using SlotMachineAPI.Infrastructure.Repositories;
 using SlotMachineAPI.Infrastructure.Service;
 using System.Reflection;
+using System.Text;
 
 public static class ServiceExtensions
 {
@@ -34,12 +37,54 @@ public static class ServiceExtensions
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(c =>
         {
-            c.SwaggerDoc("v1", new OpenApiInfo { Title = "MongoDBTest API", Version = "v1" });
+            c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                In = ParameterLocation.Header,
+                Description = "Please enter your Format must be: Bearer [space ] -token-",
+                Name = "Authorization",
+                Type = SecuritySchemeType.ApiKey
+            });
+
+            c.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+            {
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                },
+                new string[] {}
+            }
+        });
         });
 
         // Auth Configuration
         services.AddSingleton<IUserRepository, UserRepository>();
         services.AddSingleton<AuthService>();
+
+        // Jtw Configuration
+        var key = Encoding.UTF8.GetBytes(configuration["Jwt:Key"] ?? "DefaultSecretKey");
+
+        services.AddAuthorization();
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = configuration["Jwt:Issuer"],
+                    ValidAudience = configuration["Jwt:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(key)
+                };
+            });
 
         services.AddControllers();
     }

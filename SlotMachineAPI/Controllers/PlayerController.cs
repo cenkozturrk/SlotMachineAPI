@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SlotMachineAPI.Application.Players.Commands;
@@ -22,6 +23,7 @@ namespace SlotMachineAPI.Controllers
             _mediator = mediator;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAllPlayers()
         {
@@ -32,6 +34,7 @@ namespace SlotMachineAPI.Controllers
             return Ok(players);
         }
 
+        [Authorize(Roles = "Admin,Employer")]
         [HttpGet("id")]
         public async Task<IActionResult> GetPlayer([FromQuery] GetPlayerQuery query)
         {
@@ -42,6 +45,7 @@ namespace SlotMachineAPI.Controllers
             return Ok(player);
         }
 
+        [Authorize(Roles = "Admin,Employer")]
         [HttpPost("create")]
         public async Task<IActionResult> CreatePlayer([FromBody] CreatePlayerCommand command)
         {
@@ -56,6 +60,7 @@ namespace SlotMachineAPI.Controllers
             });
         }
 
+        [Authorize(Roles = "Admin,Employer")] 
         [HttpPut("update-balance")]
         public async Task<IActionResult> UpdateBalance([FromBody] UpdateBalanceCommand command)
         {
@@ -67,8 +72,9 @@ namespace SlotMachineAPI.Controllers
             {
                 message = "Balance updated successfully"
             });
-        }     
+        }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> DeletePlayer([FromBody] DeletePlayerCommand command)
         {

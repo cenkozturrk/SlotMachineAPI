@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SlotMachineAPI.Application.Players.Commands;
@@ -15,6 +16,7 @@ namespace SlotMachineAPI.Controllers
             _mediator = mediator;
         }
 
+        [Authorize(Roles = "User")]
         [HttpPost("spin/playerId")]
         public async Task<IActionResult> Spin([FromBody] SpinCommand command)
         {

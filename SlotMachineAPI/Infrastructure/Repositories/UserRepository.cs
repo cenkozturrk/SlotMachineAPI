@@ -13,7 +13,7 @@ namespace SlotMachineAPI.Infrastructure.Repositories
         {
             var client = new MongoClient(settings.Value.ConnectionString);
             var database = client.GetDatabase(settings.Value.DatabaseName);
-            _users = database.GetCollection<User>("Users"); // MongoDB Collaction name
+            _users = database.GetCollection<User>("Users"); 
         }
 
         public async Task<User> GetByEmailAsync(string email) =>

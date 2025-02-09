@@ -19,25 +19,11 @@ namespace SlotMachineAPI.Controllers
         {
             _authService = authService;
         }
-        public class RegisterRequest
-        {
-            public string Username { get; set; }
-            public string Email { get; set; }
-            public string Password { get; set; }
-        }   
-        public class LoginRequest
-        {
-            public string Email { get; set; }
-            public string Password { get; set; }
-        }  
-        public class RefreshRequest
-         {
-            public string RefreshToken { get; set; }
-         }   
+         
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterRequest request)
+        public async Task<IActionResult> Register([FromBody] AuthRequests.RegisterRequest request)
         {
-            var (accessToken, refreshToken) = await _authService.Register(request.Username, request.Email, request.Password);
+            var (accessToken, refreshToken) = await _authService.Register(request.Username, request.Email, request.Password, request.Role);
             return Ok(new
             {
                 AccessToken = accessToken,
@@ -46,7 +32,7 @@ namespace SlotMachineAPI.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginRequest request)
+        public async Task<IActionResult> Login([FromBody] AuthRequests.LoginRequest request)
         {
             var (accessToken, refreshToken) = await _authService.Login(request.Email, request.Password);
             return Ok(new
@@ -57,7 +43,7 @@ namespace SlotMachineAPI.Controllers
         }
 
         [HttpPost("refresh")]
-        public async Task<IActionResult> RefreshToken([FromBody] RefreshRequest request)
+        public async Task<IActionResult> RefreshToken([FromBody] AuthRequests.RefreshRequest request)
         {
             var (accessToken, refreshToken) = await _authService.RefreshToken(request.RefreshToken);
             return Ok(new

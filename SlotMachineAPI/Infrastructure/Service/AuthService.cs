@@ -20,7 +20,12 @@ namespace SlotMachineAPI.Infrastructure.Service
         public async Task<(string AccessToken, string RefreshToken)> Login(string email, string password)
         {
             var user = await _userRepository.GetByEmailAsync(email);
-            if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
+
+            if (user == null)
+                throw new Exception("Invalid email or password!");
+
+            bool isPasswordValid = BCrypt.Net.BCrypt.Verify(password, user.PasswordHash);
+            if (!isPasswordValid)
                 throw new Exception("Invalid email or password!");
 
             user.RefreshToken = GenerateRefreshToken();
@@ -30,7 +35,8 @@ namespace SlotMachineAPI.Infrastructure.Service
             var accessToken = GenerateJwtToken(user);
             return (accessToken, user.RefreshToken);
         }
-        public async Task<(string AccessToken, string RefreshToken)> Register(string username, string email, string password)
+
+        public async Task<(string AccessToken, string RefreshToken)> Register(string username, string email, string password, string role = "User")
         {
             var existingUser = await _userRepository.GetByEmailAsync(email);
             if (existingUser != null)
@@ -42,7 +48,7 @@ namespace SlotMachineAPI.Infrastructure.Service
                 Username = username,
                 Email = email,
                 PasswordHash = hashedPassword,
-                Role = "User",
+                Role = role, 
                 RefreshToken = GenerateRefreshToken(),
                 RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7)
             };
@@ -51,6 +57,8 @@ namespace SlotMachineAPI.Infrastructure.Service
             var accessToken = GenerateJwtToken(newUser);
             return (accessToken, newUser.RefreshToken);
         }
+
+
         public async Task<(string AccessToken, string RefreshToken)> RefreshToken(string refreshToken)
         {
             var user = await _userRepository.GetByRefreshTokenAsync(refreshToken);
