@@ -17,7 +17,7 @@ namespace SlotMachineAPI.Controllers
         }
 
         [Authorize(Roles = "Admin,User")]
-        [HttpPost("spin/playerId")]
+        [HttpPost("playerId")]
         public async Task<IActionResult> Spin([FromBody] SpinCommand command)
         {
             var player = await _mediator.Send(command);

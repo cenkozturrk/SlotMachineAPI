@@ -23,7 +23,7 @@ namespace SlotMachineAPI.Controllers
             _mediator = mediator;
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin,Employer")]
         [HttpGet]
         public async Task<IActionResult> GetAllPlayers()
         {

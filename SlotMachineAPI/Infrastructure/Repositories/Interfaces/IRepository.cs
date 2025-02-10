@@ -1,6 +1,6 @@
 ﻿using SlotMachineAPI.Domain.Common;
 
-namespace SlotMachineAPI.Infrastructure.Repositories
+namespace SlotMachineAPI.Infrastructure.Repositories.Interfaces
 {
     public interface IRepository<T> where T : IEntity
     {

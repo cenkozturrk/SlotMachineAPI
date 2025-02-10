@@ -4,24 +4,31 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
-using SlotMachineAPI.Infrastructure.Repositories;
 using SlotMachineAPI.Domain;
 using Microsoft.Extensions.Logging;
 using SlotMachineAPI.Application.Players.Commands.SpindCommand;
+using SlotMachineAPI.Domain.Entities;
+using SlotMachineAPI.Infrastructure.Repositories.Interfaces;
 
 namespace SlotMachineAPI.Tests.Handlers
 {
     public class SpinHandlerTests
     {
         private readonly Mock<IPlayerRepository> _playerRepositoryMock;
+        private readonly Mock<ISlotMachineSettingsRepository> _slotMachineSettingsMock;
         private readonly Mock<ILogger<SpinHandler>> _loggerMock;
         private readonly SpinHandler _handler;
 
         public SpinHandlerTests()
         {
             _playerRepositoryMock = new Mock<IPlayerRepository>();
+            _slotMachineSettingsMock = new Mock<ISlotMachineSettingsRepository>();  
             _loggerMock = new Mock<ILogger<SpinHandler>>();
-            _handler = new SpinHandler(_playerRepositoryMock.Object, _loggerMock.Object);
+
+            _slotMachineSettingsMock.Setup(repo => repo.GetSettingsAsync())
+                .ReturnsAsync(new SlotMachineSettings { Rows = 3, Cols = 5 });
+
+            _handler = new SpinHandler(_playerRepositoryMock.Object, _loggerMock.Object, _slotMachineSettingsMock.Object);
         }
 
         /// <summary>
@@ -33,8 +40,11 @@ namespace SlotMachineAPI.Tests.Handlers
         {
             // Arrange
             var player = new Player { Id = "67a533e7175f6d97b8e47a7d", Name = "Wayne Gretzky", Balance = 100 };
+            var settings = new SlotMachineSettings { Rows = 3, Cols = 5 };
+
             _playerRepositoryMock.Setup(repo => repo.GetByIdAsync("67a533e7175f6d97b8e47a7d")).ReturnsAsync(player);
             _playerRepositoryMock.Setup(repo => repo.UpdateAsync(player.Id, player)).Returns(Task.CompletedTask);
+            _slotMachineSettingsMock.Setup(repo => repo.GetSettingsAsync()).ReturnsAsync(settings); 
 
             var command = new SpinCommand { PlayerId = "67a533e7175f6d97b8e47a7d", BetAmount = 10 };
 
@@ -56,8 +66,11 @@ namespace SlotMachineAPI.Tests.Handlers
         {
             // Arrange
             var player = new Player { Id = "67a533e7175f6d97b8e47a7d", Name = "Wayne Gretzky", Balance = 100 };
+            var settings = new SlotMachineSettings { Rows = 3, Cols = 5 };
+
             _playerRepositoryMock.Setup(repo => repo.GetByIdAsync("67a533e7175f6d97b8e47a7d")).ReturnsAsync(player);
             _playerRepositoryMock.Setup(repo => repo.UpdateAsync(player.Id, player)).Returns(Task.CompletedTask);
+            _slotMachineSettingsMock.Setup(repo => repo.GetSettingsAsync()).ReturnsAsync(settings);
 
             var command = new SpinCommand { PlayerId = "67a533e7175f6d97b8e47a7d", BetAmount = 10 };
 

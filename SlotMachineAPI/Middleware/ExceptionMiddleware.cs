@@ -1,4 +1,5 @@
 ﻿using Serilog;
+using SlotMachineAPI.Application.Enums;
 using System.Net;
 using System.Text.Json;
 
@@ -8,13 +9,16 @@ namespace SlotMachineAPI.Middleware
     /// Middleware for handling global exceptions.
     /// Logs errors and returns user-friendly error messages.
     /// </summary>
+
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;
+
         public ExceptionMiddleware(RequestDelegate next)
         {
             _next = next;
         }
+
         public async Task Invoke(HttpContext context)
         {
             try
@@ -29,6 +33,7 @@ namespace SlotMachineAPI.Middleware
                 await HandleExceptionAsync(context, ex);
             }
         }
+
         private static Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
             var response = context.Response;
@@ -36,14 +41,16 @@ namespace SlotMachineAPI.Middleware
 
             var statusCode = exception switch
             {
-                KeyNotFoundException => (int)HttpStatusCode.NotFound,
-                _ => (int)HttpStatusCode.InternalServerError
+                UnauthorizedAccessException => (int)ErrorMessages.Unauthorized,
+                ArgumentException => (int)ErrorMessages.BadRequest,
+                KeyNotFoundException => (int)ErrorMessages.NotFound,
+                _ => (int)ErrorMessages.ServerError
             };
 
             var errorResponse = new
             {
                 StatusCode = statusCode,
-                Message = statusCode == 404 ? "The source could not be found." : "There was a server error, please try again!",
+                Message = ((ErrorMessages)statusCode).GetMessage(), // take message from enum
                 Error = exception.Message
             };
 
@@ -55,3 +62,4 @@ namespace SlotMachineAPI.Middleware
         }
     }
 }
+

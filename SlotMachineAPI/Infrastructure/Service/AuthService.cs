@@ -1,6 +1,6 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using SlotMachineAPI.Domain;
-using SlotMachineAPI.Infrastructure.Repositories;
+using SlotMachineAPI.Infrastructure.Repositories.Interfaces;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;

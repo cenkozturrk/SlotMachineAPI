@@ -1,6 +1,6 @@
 ﻿using SlotMachineAPI.Domain;
 
-namespace SlotMachineAPI.Infrastructure.Repositories
+namespace SlotMachineAPI.Infrastructure.Repositories.Interfaces
 {
     public interface IUserRepository
     {

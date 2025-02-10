@@ -3,10 +3,10 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
-using SlotMachineAPI.Infrastructure.Repositories;
 using SlotMachineAPI.Domain;
 using Microsoft.Extensions.Logging;
 using SlotMachineAPI.Application.Players.Commands.UpdatePlayerCommand;
+using SlotMachineAPI.Infrastructure.Repositories.Interfaces;
 
 namespace SlotMachineAPI.Tests.Handlers
 {

@@ -1,7 +1,8 @@
 ﻿using SlotMachineAPI.Domain;
 using SlotMachineAPI.Infrastructure.Context;
+using SlotMachineAPI.Infrastructure.Repositories.Interfaces;
 
-namespace SlotMachineAPI.Infrastructure.Repositories
+namespace SlotMachineAPI.Infrastructure.Repositories.Implementations
 {
     /// <summary>
     /// Repository class for Player entity.

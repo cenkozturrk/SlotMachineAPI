@@ -7,7 +7,8 @@ using Microsoft.OpenApi.Models;
 using Serilog;
 using SlotMachineAPI.Application.Players.Commands.SpindCommand;
 using SlotMachineAPI.Infrastructure.Context;
-using SlotMachineAPI.Infrastructure.Repositories;
+using SlotMachineAPI.Infrastructure.Repositories.Implementations;
+using SlotMachineAPI.Infrastructure.Repositories.Interfaces;
 using SlotMachineAPI.Infrastructure.Service;
 using System.Reflection;
 using System.Text;
@@ -32,6 +33,7 @@ public static class ServiceExtensions
         services.Configure<MongoDBSettings>(configuration.GetSection("MongoDB"));
         services.AddSingleton<MongoDBContext>();
         services.AddSingleton<IPlayerRepository, PlayerRepository>();
+        services.AddSingleton<ISlotMachineSettingsRepository, SlotMachineSettingsRepository>();
 
         // MediatR Configuration
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));

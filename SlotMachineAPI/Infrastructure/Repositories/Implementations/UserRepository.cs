@@ -2,8 +2,9 @@
 using MongoDB.Driver;
 using SlotMachineAPI.Domain;
 using SlotMachineAPI.Infrastructure.Context;
+using SlotMachineAPI.Infrastructure.Repositories.Interfaces;
 
-namespace SlotMachineAPI.Infrastructure.Repositories
+namespace SlotMachineAPI.Infrastructure.Repositories.Implementations
 {
     /// <summary>
     /// Repository class for managing user-related database operations using MongoDB.
@@ -17,7 +18,7 @@ namespace SlotMachineAPI.Infrastructure.Repositories
         {
             var client = new MongoClient(settings.Value.ConnectionString);
             var database = client.GetDatabase(settings.Value.DatabaseName);
-            _users = database.GetCollection<User>("Users"); 
+            _users = database.GetCollection<User>("Users");
         }
         public async Task<User> GetByEmailAsync(string email) =>
             await _users.Find(user => user.Email == email).FirstOrDefaultAsync();

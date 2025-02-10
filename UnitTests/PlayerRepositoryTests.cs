@@ -1,9 +1,9 @@
 ﻿using Moq;
 using System.Threading.Tasks;
 using Xunit;
-using SlotMachineAPI.Infrastructure.Repositories;
 using SlotMachineAPI.Domain;
 using System.Collections.Generic;
+using SlotMachineAPI.Infrastructure.Repositories.Interfaces;
 
 namespace SlotMachineAPI.Tests.Repositories
 {

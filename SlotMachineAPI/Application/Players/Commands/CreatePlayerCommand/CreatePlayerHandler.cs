@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using SlotMachineAPI.Domain;
-using SlotMachineAPI.Infrastructure.Repositories;
+using SlotMachineAPI.Infrastructure.Repositories.Interfaces;
 
 namespace SlotMachineAPI.Application.Players.Commands.CreatePlayerCommand
 {
