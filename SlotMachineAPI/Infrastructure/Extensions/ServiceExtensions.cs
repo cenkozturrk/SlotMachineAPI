@@ -21,7 +21,6 @@ public static class ServiceExtensions
     /// </summary>
     /// <param name="services">The service collection to which dependencies are added.</param>
     /// <param name="configuration">Application configuration settings.</param>
-
     public static void AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
     {
         // Serilog Configuration

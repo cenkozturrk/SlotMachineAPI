@@ -7,9 +7,6 @@ namespace SlotMachineAPI.Domain.Common
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        string Id
-        {
-            get; set;
-        }
+        string Id { get; set; }
     }
 }

@@ -10,12 +10,12 @@ namespace SlotMachineAPI.Application.Players.Commands.SpindCommand
         private readonly IPlayerRepository _playerRepository;
         private readonly ILogger<SpinHandler> _logger;
         private readonly Random _random = new();
-
         public SpinHandler(IPlayerRepository playerRepository, ILogger<SpinHandler> logger)
         {
             _playerRepository = playerRepository;
             _logger = logger;
         }
+
         /// <summary>
         ///  Handles the spin operation for a player.
         ///  Generates a random matrix, calculates winnings based on predefined rules, and updates balance.
@@ -78,6 +78,7 @@ namespace SlotMachineAPI.Application.Players.Commands.SpindCommand
                 CurrentBalance = player.Balance
             };
         }
+
         /// <summary>
         /// Calculates the winnings based on the slot machine logic.
         /// </summary>
@@ -112,7 +113,6 @@ namespace SlotMachineAPI.Application.Players.Commands.SpindCommand
         /// <param name="line">The array representing a single line of the slot machine.</param>
         /// <param name="betAmount">The amount the player has bet.</param>
         /// <returns>The calculated win amount for the given line.</returns>
-
         private decimal CalculateLineWin(int[] line, decimal betAmount)
         {
             decimal win = 0;

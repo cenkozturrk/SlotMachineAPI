@@ -16,7 +16,6 @@ namespace SlotMachineAPI.Infrastructure.Service
     {
         private readonly IUserRepository _userRepository;
         private readonly IConfiguration _config;
-
         public AuthService(IUserRepository userRepository, IConfiguration config)
         {
             _userRepository = userRepository;
@@ -40,7 +39,6 @@ namespace SlotMachineAPI.Infrastructure.Service
             var accessToken = GenerateJwtToken(user);
             return (accessToken, user.RefreshToken);
         }
-
         public async Task<(string AccessToken, string RefreshToken)> Register(string username, string email, string password, string role = "User")
         {
             var existingUser = await _userRepository.GetByEmailAsync(email);
@@ -62,8 +60,6 @@ namespace SlotMachineAPI.Infrastructure.Service
             var accessToken = GenerateJwtToken(newUser);
             return (accessToken, newUser.RefreshToken);
         }
-
-
         public async Task<(string AccessToken, string RefreshToken)> RefreshToken(string refreshToken)
         {
             var user = await _userRepository.GetByRefreshTokenAsync(refreshToken);
@@ -79,10 +75,9 @@ namespace SlotMachineAPI.Infrastructure.Service
 
             return (newAccessToken, newRefreshToken);
         }
-
         private string GenerateJwtToken(User user)
         {
-            var key = Encoding.UTF8.GetBytes(_config["Jwt:Key"]);
+            byte[] key = Encoding.UTF8.GetBytes(_config["Jwt:Key"]);
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id),
@@ -101,7 +96,6 @@ namespace SlotMachineAPI.Infrastructure.Service
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-
         private string GenerateRefreshToken()
         {
             return Guid.NewGuid().ToString();

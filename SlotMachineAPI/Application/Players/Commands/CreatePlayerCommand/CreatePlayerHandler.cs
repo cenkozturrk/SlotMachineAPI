@@ -8,7 +8,6 @@ namespace SlotMachineAPI.Application.Players.Commands.CreatePlayerCommand
     {
         private readonly IPlayerRepository _playerRepository;
         private readonly ILogger<CreatePlayerHandler> _logger;
-
         public CreatePlayerHandler(IPlayerRepository playerRepository, ILogger<CreatePlayerHandler> logger)
         {
             _playerRepository = playerRepository;
@@ -24,7 +23,6 @@ namespace SlotMachineAPI.Application.Players.Commands.CreatePlayerCommand
         /// <returns>The unique identifier of the newly created player.</returns>
         /// <exception cref="ArgumentNullException">Thrown if the request is null.</exception>
         /// <exception cref="Exception">Logs and rethrows any unexpected errors during the player creation process.</exception>
-
         public async Task<string> Handle(CreatePlayerCommand request, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Adding a new Player.");

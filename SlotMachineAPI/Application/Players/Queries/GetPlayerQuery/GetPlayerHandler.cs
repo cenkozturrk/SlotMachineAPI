@@ -22,7 +22,6 @@ namespace SlotMachineAPI.Application.Players.Queries.GetPlayerQuery
         /// <param name="cancellationToken">Cancellation token for the async operation.</param>
         /// <returns>The player object if found; otherwise, an exception is thrown.</returns>
         /// <exception cref="Exception">Logs and rethrows any unexpected errors that occur during data retrieval.</exception>
-
         public async Task<Player> Handle(GetPlayerQuery request, CancellationToken cancellationToken)
         {
             try

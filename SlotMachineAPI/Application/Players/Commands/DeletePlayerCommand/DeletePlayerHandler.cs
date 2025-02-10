@@ -21,7 +21,6 @@ namespace SlotMachineAPI.Application.Players.Commands.DeletePlayerCommand
         /// <param name="cancellationToken">Cancellation token for the async operation.</param>
         /// <returns>True if the player was successfully deleted; false if the player was not found.</returns>
         /// <exception cref="Exception">Logs and returns false if an unexpected error occurs during deletion.</exception>
-
         public async Task<bool> Handle(DeletePlayerCommand request, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Attempting to delete player with ID: {PlayerId}", request.PlayerId);
