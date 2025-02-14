@@ -53,6 +53,7 @@ namespace SlotMachineAPI.Tests.Repositories
             // Assert
             Assert.NotNull(result);
             Assert.Equal("Wayne Gretzky", result.Name);
+
             Assert.Equal(0, result.Balance);
         }
 

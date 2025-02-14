@@ -25,7 +25,7 @@ namespace SlotMachineAPI.Infrastructure.Service
         {
             var user = await _userRepository.GetByEmailAsync(email);
 
-            if (user == null)
+            if (user is null)
                 throw new Exception("Invalid email or password!");
 
             bool isPasswordValid = BCrypt.Net.BCrypt.Verify(password, user.PasswordHash);
@@ -63,7 +63,7 @@ namespace SlotMachineAPI.Infrastructure.Service
         public async Task<(string AccessToken, string RefreshToken)> RefreshToken(string refreshToken)
         {
             var user = await _userRepository.GetByRefreshTokenAsync(refreshToken);
-            if (user == null || user.RefreshTokenExpiryTime < DateTime.UtcNow)
+            if (user is null || user.RefreshTokenExpiryTime < DateTime.UtcNow)
                 throw new Exception("Invalid or expired refresh token!");
 
             var newAccessToken = GenerateJwtToken(user);

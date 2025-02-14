@@ -52,7 +52,7 @@ public class SpinHandler : IRequestHandler<SpinCommand, SpinResult>
 
         // Get the slot machine size from MongoDB
         var settings = await _settingsRepository.GetSettingsAsync();
-        if (settings == null)
+        if (settings is  null)
         {
             _logger.LogError("Slot machine settings not found in the database!");
             throw new InvalidOperationException("Slot machine settings not configured!");
