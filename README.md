@@ -20,14 +20,14 @@
 - Unit Testing (xUnit)
 
 # Summary 
-1. Registration & Login: 
+- Registration & Login: 
 o Admin/Employer must register using the register method. 
 o Only Admin users can access all endpoints. 
 o After registration, a token is generated, which must be entered in the 
 Bearer authorization header. 
 o Login is performed using the Login endpoint.
 
-2. Player Operations: 
+- Player Operations: 
 o GET → List all players. 
 o GET by ID → Retrieve a player by ID. 
 o CREATE → Add a new player. 
@@ -35,7 +35,7 @@ o DELETE → Remove a player.
 o UPDATE-BALANCE → Modify a player’s balance (Use - for balance 
 deduction). 
 
-3. Spin Method: 
+- Spin Method: 
 o Select a Player ID to start spinning. 
 o Enter a bet amount, and the system returns a 5x3 matrix. 
 o Every new player starts with a 100 bonus balance. 
@@ -45,7 +45,7 @@ message.
 o If the balance reaches zero, the game stops and an error message is 
 displayed. 
 
-4. Key Points: 
+- Key Points: 
 o The system is designed for real-time operations. 
 o All methods follow specific business rules to ensure proper functionality. 
 o Admin users have full access to all features. 
@@ -54,11 +54,3 @@ o Admin users have full access to all features.
 
 
 
-### Running MongoDB on the Local Machine
-1. **Make sure that MongoDB Compass** is installed.
-2. **Connect with MongoDB Compass**  
-   - Connection address: `mongodb://localhost:27017`
-   - Database name: `SlotMachineDB`
-3. **If you are using Docker** you can start MongoDB by running the following command:
-   ```bash
-   docker run -d --name mongodb-container -p 27017:27017 mongo
