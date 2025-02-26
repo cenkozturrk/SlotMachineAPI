@@ -12,7 +12,6 @@
 
 #  Installation & Setup Guide
 This section provides step-by-step instructions on how to set up the Slot Machine API locally, including required dependencies, environment setup, and database configuration.
-Prequisites
 Before running the project, ensure that you have the following installed:
 - Visual Studio 2022+
 - .NET 9 SDK
