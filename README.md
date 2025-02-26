@@ -48,16 +48,7 @@ amount
 - After registration, a token is generated, which must be entered in the 
 Bearer authorization header. 
 - Login is performed using the Login endpoint.
-
-2. Player Operations: 
-- GET → List all players. 
-- GET by ID → Retrieve a player by ID. 
-- CREATE → Add a new player. 
-- DELETE → Remove a player. 
-- UPDATE-BALANCE → Modify a player’s balance (Use - for balance 
-deduction). 
-
-3. Spin Method: 
+2. Spin Method: 
 - Select a Player ID to start spinning. 
 - Enter a bet amount, and the system returns a 5x3 matrix. 
 - Every new player starts with a 100 bonus balance. 
@@ -66,8 +57,7 @@ deduction).
 message. 
 - If the balance reaches zero, the game stops and an error message is 
 displayed. 
-
-4. Key Points: 
+3. Key Points: 
 - The system is designed for real-time operations. 
 - All methods follow specific business rules to ensure proper functionality. 
 - Admin users have full access to all features. 
