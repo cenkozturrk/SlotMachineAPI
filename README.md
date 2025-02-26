@@ -24,6 +24,7 @@ Before running the project, ensure that you have the following installed:
 - CQRS 
 - MediatR
 - MongoDB
+- Generic Repository
 - Fluent Validaton
 - Authentication and Jwt
 - Serilog
