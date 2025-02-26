@@ -17,6 +17,15 @@ Before running the project, ensure that you have the following installed:
 - .NET 9 SDK
 - MongoDB Compass 
 
+# Player and Update Phase 
+Since we have five different endpoints, each serves a specific purpose. Here is their 
+breakdown: 
+- GET → Lists all players. 
+- GET by ID → Retrieves a player based on their ID. 
+- CREATE → Creates a new player. 
+- DELETE → Deletes a player. 
+- UPDATE-BALANCE →Adds to or subtracts from your balance by the updated 
+amount
 
 # Technologies Used
 
