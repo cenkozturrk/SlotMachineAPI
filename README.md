@@ -12,18 +12,11 @@
 
 #  Installation & Setup Guide
 This section provides step-by-step instructions on how to set up the Slot Machine API locally, including required dependencies, environment setup, and database configuration.
-# Prequisites
++ Prequisites
 Before running the project, ensure that you have the following installed:
-1.Visual Studio 2022+
-oRequired for running and debugging the application.
-oDownload: Visual Studio Download
-2..NET 9 SDK
-oThe API is built using .NET 9.
-oDownload: .NET 9 SDK
-3.MongoDB Compass 
-oRequired for database storage and management.
-oInstall MongoDB Compass for local database management:
-MongoDB Compass Download
+- Visual Studio 2022+
+- .NET 9 SDK
+- MongoDB Compass 
 
 
 # Technologies Used
