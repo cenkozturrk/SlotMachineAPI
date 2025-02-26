@@ -20,35 +20,35 @@
 - Unit Testing (xUnit)
 
 # Summary 
-- Registration & Login: 
-o Admin/Employer must register using the register method. 
-o Only Admin users can access all endpoints. 
-o After registration, a token is generated, which must be entered in the 
+1. Registration & Login: 
+- Admin/Employer must register using the register method. 
+- Only Admin users can access all endpoints. 
+- After registration, a token is generated, which must be entered in the 
 Bearer authorization header. 
-o Login is performed using the Login endpoint.
+- Login is performed using the Login endpoint.
 
-- Player Operations: 
-o GET → List all players. 
-o GET by ID → Retrieve a player by ID. 
-o CREATE → Add a new player. 
-o DELETE → Remove a player. 
-o UPDATE-BALANCE → Modify a player’s balance (Use - for balance 
+2. Player Operations: 
+- GET → List all players. 
+- GET by ID → Retrieve a player by ID. 
+- CREATE → Add a new player. 
+- DELETE → Remove a player. 
+- UPDATE-BALANCE → Modify a player’s balance (Use - for balance 
 deduction). 
 
-- Spin Method: 
-o Select a Player ID to start spinning. 
-o Enter a bet amount, and the system returns a 5x3 matrix. 
-o Every new player starts with a 100 bonus balance. 
-o The system calculates winAmount and currentBalance dynamically. 
-o If a player tries to bet more than their balance, they receive an error 
+3. Spin Method: 
+- Select a Player ID to start spinning. 
+- Enter a bet amount, and the system returns a 5x3 matrix. 
+- Every new player starts with a 100 bonus balance. 
+- The system calculates winAmount and currentBalance dynamically. 
+- If a player tries to bet more than their balance, they receive an error 
 message. 
-o If the balance reaches zero, the game stops and an error message is 
+- If the balance reaches zero, the game stops and an error message is 
 displayed. 
 
-- Key Points: 
-o The system is designed for real-time operations. 
-o All methods follow specific business rules to ensure proper functionality. 
-o Admin users have full access to all features. 
+4. Key Points: 
+- The system is designed for real-time operations. 
+- All methods follow specific business rules to ensure proper functionality. 
+- Admin users have full access to all features. 
 �
 � With this setup, all endpoint functionalities can be tested efficiently!
 
